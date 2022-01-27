@@ -71,7 +71,7 @@
     @endif
 
     @if ($errors->any())
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" id="error-alert">
             <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -100,7 +100,7 @@
         });
 
         $("#error-alert").fadeTo(2000, 500).slideUp(500, function(){
-            $("success-alert").slideUp(500);
+            $("error-alert").slideUp(500);
         });
 
         // Delete Alert

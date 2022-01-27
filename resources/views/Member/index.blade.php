@@ -32,7 +32,23 @@
                 <td>{{ $i = (isset($i)?++$i:$i=1) }}</td>
                 <td>{{ $mbr->nama }}</td>
                 <td>{{ $mbr->alamat }}</td>
-                <td>{{ $mbr->jenis_kelamin }}</td>
+                <td>
+                    <!-- 
+                        Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
+                        MySql akan sesuai yg kita inginkan
+                    -->
+                    @switch($mbr->jenis_kelamin)
+                        @case('L')
+                           Laki-Laki 
+                            @break
+                        @case('P')
+                            Perempuan
+                            @break
+                        @default
+                            
+                    @endswitch
+                    {{-- {{ $mbr->jenis_kelamin }} --}}
+                </td>
                 <td>{{ $mbr->tlp }}</td>
                 <td>
                     <!-- Update Data -->
@@ -71,7 +87,7 @@
     @endif
 
     @if ($errors->any())
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" id="error-alert2 ">
             <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -100,7 +116,7 @@
         });
 
         $("#error-alert").fadeTo(2000, 500).slideUp(500, function(){
-            $("success-alert").slideUp(500);
+            $("error-alert").slideUp(500);
         });
 
         // Delete Alert

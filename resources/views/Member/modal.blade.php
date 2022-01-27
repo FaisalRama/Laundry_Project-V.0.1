@@ -12,22 +12,22 @@
             <div id="method"></div>
             <div class="form-group">
               <label for="exampleInputText">Nama : </label>
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama!">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama!" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputText">Alamat : </label>
-                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Isi Alamat Anda" >
+                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Isi Alamat Anda" required >
               </div>
               <div class="form-group">
                 <label for="exampleInputText">Jenis Kelamin : </label>
                 <select id="jenis_kelamin" name="jenis_kelamin" required="required" class="form-control" >
-                      <option>L</option>
-                      <option>P</option>
+                      <option value="L">Laki-laki</option>
+                      <option value="P">Perempuan</option>
               </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputText">No. Telepon : </label>
-                <input type="text" class="form-control" id="tlp" name="tlp" placeholder="Enter Your Unit">
+                <input type="text" class="form-control" id="tlp" name="tlp" placeholder="Enter Your Unit" required>
               </div>
         </div>
         <div class="modal-footer">

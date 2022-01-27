@@ -55,11 +55,11 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="/"><i class="fa fa-home"></i> Home </a></li>
-                  <li><a href="detail_transaksi"><i class="fa fa-edit"></i> Detail Transaction <!-- <span class="fa fa-chevron-down"> --></span></a>
-                    <!-- <ul class="nav child_menu">
-                      <li><a href="pembelian">Pembelian</a></li>
-                      <li><a href="penjualan">Penjualan</a></li>
-                    </ul> -->
+                  <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="transaksi">Transaksi</a></li>
+                      <li><a href="detail_transaksi">detail_transaksi</a></li>
+                    </ul>
                   </li>
                   <li><a href="member"><i class="fa fa-table"></i> Member <!-- <span class="fa fa-chevron-down">--> </span></a>
                     <!-- <ul class="nav child_menu">

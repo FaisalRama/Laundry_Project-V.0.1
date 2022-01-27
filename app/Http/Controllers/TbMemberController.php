@@ -44,7 +44,7 @@ class TbMemberController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'jenis_kelamin' => 'required',
-            'tlp' => 'required'
+            'tlp' => 'required|numeric|min:10|max:12'
         ]);
 
         $input = tb_member::create($validated);
@@ -85,6 +85,7 @@ class TbMemberController extends Controller
     {
         tb_member::find($id)->update($request->all());
         return redirect('member')->with('success', 'Data Produk Berhasil Diubah!');
+
     }
 
     /**
