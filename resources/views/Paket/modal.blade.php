@@ -12,8 +12,11 @@
             <div id="method"></div>
             <div class="form-group">
               <label for="exampleInputText">Id Outlet : </label>
-              <input type="text" class="form-control" id="id_outlet" name="id_outlet" placeholder="Nama Paket?">
-            </div>
+              <select id="id_outlet" name="id_outlet" required="required" class="form-control" >
+                @foreach ($outlet as $o)
+                  <option value="{{ $o->id }}">{{ $o->nama }}</option>
+                @endforeach
+        </select>
             <div class="form-group">
                 <label for="exampleInputText">Jenis : </label>
                 <select id="jenis" name="jenis" required="required" class="form-control" >
