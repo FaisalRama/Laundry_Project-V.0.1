@@ -12,7 +12,7 @@
             <div id="method"></div>
             <div class="form-group">
               <label for="exampleInputText">Id Outlet : </label>
-              <input type="text" class="form-control" id="id_outlet" name="id_outlet" placeholder="Masukkan Id Outlet!">
+              <input type="text" class="form-control" id="id_outlet" name="id_outlet" placeholder="Nama Paket?">
             </div>
             <div class="form-group">
                 <label for="exampleInputText">Jenis : </label>

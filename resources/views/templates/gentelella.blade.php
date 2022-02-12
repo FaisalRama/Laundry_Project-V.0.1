@@ -52,7 +52,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                
                 <ul class="nav side-menu">
                   <li><a href="/"><i class="fa fa-home"></i> Home </a></li>
                   <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
@@ -75,8 +75,8 @@
                   <!-- Paket -->
                   <li><a href="paket"><i class="fa fa-folder-o"></i> Paket </span></a></li>
 
-                  <!-- Transaksi -->
-                  <li><a href="transaksi"><i class="fa fa-shopping-cart"></i> Transaction </span></a></li>
+                  {{-- <!-- Transaksi -->
+                  <li><a href="transaksi"><i class="fa fa-shopping-cart"></i> Transaction </span></a></li> --}}
 
                   <!-- Transaksi -->
                   <li><a href="user"><i class="fa fa-user" aria-hidden="true"></i> User </span></a></li>

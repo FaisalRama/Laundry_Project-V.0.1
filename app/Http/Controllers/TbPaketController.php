@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tb_paket;
 use App\Http\Requests\Storetb_paketRequest;
 use App\Http\Requests\Updatetb_paketRequest;
+use App\Models\tb_outlet;
 use Illuminate\Http\Request;
 
 class TbPaketController extends Controller
@@ -17,7 +18,8 @@ class TbPaketController extends Controller
     public function index()
     {
         return view('Paket/index' , [
-            'paket' => tb_paket::all()
+            'paket' => tb_paket::all(),
+            'outlet' => tb_outlet::all()
         ]);
     }
 

@@ -30,7 +30,7 @@
             @foreach ($paket as $pk)
                 <tr>
                 <td>{{ $i = (isset($i)?++$i:$i=1) }}</td>
-                <td>{{ $pk->id_paket }}</td>
+                <td>{{ $pk->id_outlet }}</td>
                 <td>{{ $pk->jenis }}</td>
                 <td>{{ $pk->nama_paket }}</td>
                 <td>{{ $pk->harga }}</td>
@@ -59,7 +59,7 @@
         </table>
     </div>
 
-    <!-- JSQuery -->
+    <!-- JSQuery --
 <div>
     @if(session('success'))
         <div class="alert alert-success" role="alert" id="success-alert">

@@ -15,4 +15,10 @@ class tb_paket extends Model
                             'jenis', 
                             'nama_paket', 
                             'harga'];
+
+    // Relasi dengan TB_Outlet
+    public function outlet(){
+        return $this -> belongsTo(tb_outlet::class, "id_outlet");
+    }
+
 }
