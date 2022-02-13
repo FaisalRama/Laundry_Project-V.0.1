@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TbDetailTransaksiController;
 use App\Http\Controllers\TbMemberController;
 use App\Http\Controllers\TbOutletController;
@@ -26,6 +28,11 @@ Route::resource('paket', TbPaketController::class);
 Route::resource('transaksi', TbTransaksiController::class);
 Route::resource('user', TbUserController::class);
 
-Route::get('/', function () {
-    return view('Home.index');
+// Rute Home dan Login
+Route::middleware(['auth'])->group(function(){
+    Route::get('home', [HomeController::class, 'index']);
 });
+
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'authenthicate']);
+Route::post('logout', [LoginController::class, 'logout']);

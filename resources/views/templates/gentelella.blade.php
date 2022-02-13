@@ -126,7 +126,12 @@
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <form action="/logout" method="POST">
+                      @csrf
+                      <button type="submit" class="border-0 dropdown-item" >
+                          Log Out <i class="fa fa-sign-out"></i>
+                      </button>
+                    </form>
                     </div>
                   </li>
   

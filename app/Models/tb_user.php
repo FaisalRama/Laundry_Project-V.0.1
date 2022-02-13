@@ -11,8 +11,8 @@ class tb_user extends Model
 
     public $incrementing = true;
     protected $table = 'tb_user';
-    protected $fillable = ['nama', 
-                            'username', 
+    protected $fillable = ['name', 
+                            'email', 
                             'password', 
                             'id_outlet', 
                             'role'];
