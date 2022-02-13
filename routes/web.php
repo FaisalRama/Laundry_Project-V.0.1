@@ -21,16 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('detail_transaksi', TbDetailTransaksiController::class);
-Route::resource('member', TbMemberController::class);
-Route::resource('outlet', TbOutletController::class);
-Route::resource('paket', TbPaketController::class);
-Route::resource('transaksi', TbTransaksiController::class);
-Route::resource('user', TbUserController::class);
 
 // Rute Home dan Login
 Route::middleware(['auth'])->group(function(){
     Route::get('home', [HomeController::class, 'index']);
+    Route::resource('detail_transaksi', TbDetailTransaksiController::class);
+    Route::resource('member', TbMemberController::class);
+    Route::resource('outlet', TbOutletController::class);
+    Route::resource('paket', TbPaketController::class);
+    Route::resource('transaksi', TbTransaksiController::class);
+    Route::resource('user', TbUserController::class);
+
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
