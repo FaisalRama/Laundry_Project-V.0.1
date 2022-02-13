@@ -21,19 +21,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::middleware(['auth'])->group(function(){
+//     Route::get('home', [HomeController::class, 'index']);
+//     Route::resource('detail_transaksi', TbDetailTransaksiController::class);
+//     Route::resource('member', TbMemberController::class);
+//     Route::resource('outlet', TbOutletController::class);
+//     Route::resource('paket', TbPaketController::class);
+//     Route::resource('transaksi', TbTransaksiController::class);
+//     Route::resource('user', TbUserController::class);
+// });
 
-// Rute Home dan Login
-Route::middleware(['auth'])->group(function(){
-    Route::get('home', [HomeController::class, 'index']);
-    Route::resource('detail_transaksi', TbDetailTransaksiController::class);
-    Route::resource('member', TbMemberController::class);
-    Route::resource('outlet', TbOutletController::class);
-    Route::resource('paket', TbPaketController::class);
-    Route::resource('transaksi', TbTransaksiController::class);
-    Route::resource('user', TbUserController::class);
-
-});
-
+// Route Login
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenthicate']);
 Route::post('logout', [LoginController::class, 'logout']);
+
+// Route Baru Serapan Middleware
+Route::group(['prefix' => 'a', 'middleware' => ['isAdmin', 'auth']],
+function(){
+    Route::get('home', [HomeController::class, 'index'])->name('a.home');
+    Route::resource('member', MemberController::class);
+    Route::resource('paket', PaketController::class);
+    Route::resource('outlet', OutletController::class);
+    Route::get('transaksi', [TransaksiController::class, 'index']);
+    Route::get('laporan', [LaporanController::class], 'index');
+});
+
+Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 
+function(){
+    Route::get('home', [HomeController::class, 'index'])->name('k.home');
+    Route::resource('member', MemberController::class);
+    Route::resource('paket', PaketController::class);
+    Route::get('transaksi', [TransaksiController::class, 'index']);
+    Route::get('laporan', [LaporanController::class, 'index']);
+});
+
+Route::group(['prefix' => 'o', 'middleware'=>['isOwner', 'auth']], function(){
+    Route::get('home', [HomeController::class, 'index'])->name('o.home');
+    Route::get('laporan', [LaporanController::class, 'index']);
+});
