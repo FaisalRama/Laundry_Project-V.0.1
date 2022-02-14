@@ -5,10 +5,10 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Isi Data Member Mu !</h5>
         </div>
+        <!-- Form -->
+        <form action="/{{ Auth::user()->role == 'admin' ? 'a' : 'k' }}/member" method="POST">
+          @csrf
         <div class="modal-body">
-          <!-- Form -->
-          <form action="{{ route('member.store') }}" method="POST">
-            @csrf
             <div id="method"></div>
             <div class="form-group">
               <label for="exampleInputText">Nama : </label>
@@ -31,7 +31,7 @@
               </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>

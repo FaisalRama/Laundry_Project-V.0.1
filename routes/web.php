@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TbDetailTransaksiController;
 use App\Http\Controllers\TbMemberController;
@@ -34,25 +35,27 @@ use Illuminate\Support\Facades\Route;
 // Route Login
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenthicate']);
-Route::post('logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route Baru Serapan Middleware
 Route::group(['prefix' => 'a', 'middleware' => ['isAdmin', 'auth']],
 function(){
     Route::get('home', [HomeController::class, 'index'])->name('a.home');
-    Route::resource('member', MemberController::class);
-    Route::resource('paket', PaketController::class);
-    Route::resource('outlet', OutletController::class);
-    Route::get('transaksi', [TransaksiController::class, 'index']);
+    Route::resource('member', TbMemberController::class);
+    Route::resource('paket', TbPaketController::class);
+    Route::resource('outlet', TbOutletController::class);
+    Route::get('transaksi', [TbTransaksiController::class, 'index']);
+    Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class], 'index');
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 
 function(){
     Route::get('home', [HomeController::class, 'index'])->name('k.home');
-    Route::resource('member', MemberController::class);
-    Route::resource('paket', PaketController::class);
-    Route::get('transaksi', [TransaksiController::class, 'index']);
+    Route::resource('member', TbMemberController::class);
+    Route::resource('paket', TbPaketController::class);
+    Route::get('transaksi', [TbTransaksiController::class, 'index']);
+    Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
 });
 

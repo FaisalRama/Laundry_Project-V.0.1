@@ -63,7 +63,7 @@
                     data-tlp="{{ $mbr->tlp }}" ><a>UPDATE</a></button>
                     
                     <!-- Delete Data -->
-                    <form action="{{ route('member.destroy', $mbr->id) }}" method="POST" style="display: inline">
+                    <form action="/{{ request()->segment(1) }}/member/{{ $mbr->id }}" method="POST" style="display: inline">
                      @csrf
                     @method('DELETE')
                     <button class="btn delete-member btn-danger" type="button">DELETE</button> &nbsp;

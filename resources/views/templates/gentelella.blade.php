@@ -99,6 +99,7 @@
                           <span>Settings</span>
                         </a>
                     <a class="dropdown-item"  href="javascript:;">Help</a>
+                    
                     <form action="/logout" method="POST">
                       @csrf
                       <button type="submit" class="border-0 dropdown-item" >

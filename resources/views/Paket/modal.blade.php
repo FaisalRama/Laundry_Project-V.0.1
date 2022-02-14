@@ -7,7 +7,7 @@
         </div>
         <div class="modal-body">
           <!-- Form -->
-          <form action="{{ route('paket.store') }}" method="POST">
+          <form action="/{{ Auth::user()->role == 'admin' ? 'a' : 'k' }}/paket" method="POST">
             @csrf
             <div id="method"></div>
             <div class="form-group">

@@ -92,7 +92,7 @@ class TbMemberController extends Controller
 
         $update = tb_member::find($id)->update($rules);
             if($update){
-                return redirect('member')->with('success', 'Data Produk Berhasil Diubah!');
+                return redirect(request()->segment(1).'/member')->with('success', 'Data Produk Berhasil Diubah!');
             }
     }
 
@@ -105,6 +105,6 @@ class TbMemberController extends Controller
     public function destroy($id)
     {
         tb_member::find($id)->delete();
-        return redirect('member')->with('success', 'Product Has Been Deleted');
+        return redirect(request()->segment(1).'/member')->with('success', 'Product Has Been Deleted');
     }
 }
