@@ -7,6 +7,7 @@ use App\Http\Requests\Storetb_transaksiRequest;
 use App\Http\Requests\Updatetb_transaksiRequest;
 use App\Models\tb_member;
 use App\Models\tb_outlet;
+use App\Models\tb_paket;
 
 class TbTransaksiController extends Controller
 {
@@ -17,11 +18,9 @@ class TbTransaksiController extends Controller
      */
     public function index()
     {
-        return view('Transaksi/index' , [
-            'transaksi' => tb_transaksi::all(),
-            'member' => tb_member::all(),
-            'outlet' => tb_outlet::all()
-        ]);
+        $data['member'] = tb_member::get();
+        $data['paket'] = tb_paket::where('id_outlet', auth()->user()->id_outlet)->get();
+        return view('Transaksi.index')->with($data);
     }
 
     /**

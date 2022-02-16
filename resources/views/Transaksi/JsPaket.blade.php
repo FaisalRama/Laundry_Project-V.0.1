@@ -1,10 +1,6 @@
-<div class="collapse" id="dataLaundry">
-    <div class="card-body">
-      <h3>Data</h3>
-    </div>
-  </div>  
 
-{{-- CODES OLD --}}
+
+{{-- OLD CODES JS --}}
 
 {{-- <!-- JavaScript -->
 @push('script')
@@ -28,11 +24,11 @@
         data += '<td>'+alamatMember+'</td>';
         data += '<td>'+jenis_kelaminMember+'</td>';
         data += '<td>'+tlpMember+'</td>';
-        data += '<input type="hidden" name="id_member[]" value="'+idMember+'">';
-        // data += '<input type="hidden" name="harga_beli[]" value="'+hargaBarang+'">';
+        data += '<input type="hidden" name="barang_id[]" value="'+idBarang+'">';
+        data += '<input type="hidden" name="harga_beli[]" value="'+hargaBarang+'">';
         // data += '<input type="hidden" name="sub_total[]" value="'+hargaBarang*parseInt($('#qty_barang').val())+'">';
-        // data += '<td><input type="number" value="1" min="1" class="qty" name="jumlah[]"></td>';
-        // data += '<td><input type="text" readonly name="sub_total" class="subTotal" value="'+hargaBarang+'"></td>';
+        data += '<td><input type="number" value="1" min="1" class="qty" name="jumlah[]"></td>';
+        data += '<td><input type="text" readonly name="sub_total" class="subTotal" value="'+hargaBarang+'"></td>';
         data += '<td><button type="button" class="btnRemoveBarang btn-danger">X</button></td>';
         data += '</tr>';
         if(tbody == 'Belum Ada Data!') $('#tbl-Transaksi tbody tr').remove();
