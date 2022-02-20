@@ -63,7 +63,7 @@
                     data-tlp="{{ $mbr->tlp }}" ><a>UPDATE</a></button>
                     
                     <!-- Delete Data -->
-                    <form action="{{ route('member.destroy', $mbr->id) }}" method="POST" style="display: inline">
+                    <form action="/{{ request()->segment(1) }}/member/{{ $mbr->id }}" method="POST" style="display: inline">
                      @csrf
                     @method('DELETE')
                     <button class="btn delete-member btn-danger" type="button">DELETE</button> &nbsp;
@@ -154,8 +154,8 @@
             modal.find('.modal-body #jenis_kelamin').val(jenis_kelamin)
             modal.find('.modal-body #tlp').val(tlp)
             modal.find('.modal-footer #btn-submit').text('Update')
-            modal.find('.modal-body #method').html('{{ method_field('patch') }}')
-            modal.find('.modal-body form').attr('action', 'member/'+id)
+            modal.find('.modal-body form').attr('action', '{{ url(request()->segment(1)) }}/member/'+id)
+            modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
         }else{
             modal.find('.modal-title').text('Input Data Member')
             modal.find('.modal-body #nama').val('')

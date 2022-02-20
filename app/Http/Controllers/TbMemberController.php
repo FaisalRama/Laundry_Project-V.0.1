@@ -49,7 +49,7 @@ class TbMemberController extends Controller
 
         $input = tb_member::create($validated);
 
-        if($input) return redirect('#')->with('success', 'Data Berhasil Ditambahkan!');
+        if($input) return redirect(request()->segment(1).'/member')->with('success', 'Data Berhasil Ditambahkan!');
     }
 
     /**

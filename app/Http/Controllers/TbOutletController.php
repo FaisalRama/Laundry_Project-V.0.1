@@ -84,7 +84,7 @@ class TbOutletController extends Controller
     public function update(Request $request, $id)
     {
         tb_outlet::find($id)->update($request->all());
-        return redirect('outlet')->with('success', 'Data Produk Berhasil Diubah!');  //
+        return redirect(request()->segment(1).'/outlet')->with('success', 'Data Produk Berhasil Diubah!');  //
     }
 
     /**
@@ -96,6 +96,6 @@ class TbOutletController extends Controller
     public function destroy($id)
     {
         tb_outlet::find($id)->delete();
-        return redirect('outlet')->with('success', 'Product Has Been Deleted');
+        return redirect(request()->segment(1).'/outlet')->with('success', 'Product Has Been Deleted');
     }
 }

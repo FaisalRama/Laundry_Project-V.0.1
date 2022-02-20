@@ -53,7 +53,7 @@ Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']],
 function(){
     Route::get('home', [HomeController::class, 'index'])->name('k.home');
     Route::resource('member', TbMemberController::class);
-    Route::resource('paket', TbPaketController::class);
+    Route::get('paket', [TbPaketController::class, 'index']);
     Route::get('transaksi', [TbTransaksiController::class, 'index']);
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
