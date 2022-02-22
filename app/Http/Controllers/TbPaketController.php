@@ -86,7 +86,7 @@ class TbPaketController extends Controller
     public function update(Request $request,  $id)
     {
         tb_paket::find($id)->update($request->all());
-        return redirect('paket')->with('success', 'Data paket Berhasil Diubah!'); 
+        return redirect(request()->segment(1).'/paket')->with('success', 'Data paket Berhasil Diubah!'); 
     }
 
     /**
@@ -98,6 +98,6 @@ class TbPaketController extends Controller
     public function destroy($id)
     {
         tb_paket::find($id)->delete();
-        return redirect('paket')->with('success', 'Product Has Been Deleted');
+        return redirect(request()->segment(1).'/paket')->with('success', 'Product Has Been Deleted');
     }
 }

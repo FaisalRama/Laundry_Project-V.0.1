@@ -13,7 +13,7 @@ class Storetb_transaksiRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class Storetb_transaksiRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_member' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+            'bayar' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'id_paket.required' => 'Belum ada paket yang dipilih !',
+            'id_member.required' => 'Data pelanggan belum dipilih !'
         ];
     }
 }

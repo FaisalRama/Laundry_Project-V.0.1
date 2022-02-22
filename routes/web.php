@@ -44,7 +44,7 @@ function(){
     Route::resource('member', TbMemberController::class);
     Route::resource('paket', TbPaketController::class);
     Route::resource('outlet', TbOutletController::class);
-    Route::get('transaksi', [TbTransaksiController::class, 'index']);
+    Route::resource('transaksi', TbTransaksiController::class);
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class], 'index');
 });
@@ -54,7 +54,7 @@ function(){
     Route::get('home', [HomeController::class, 'index'])->name('k.home');
     Route::resource('member', TbMemberController::class);
     Route::get('paket', [TbPaketController::class, 'index']);
-    Route::get('transaksi', [TbTransaksiController::class, 'index']);
+    Route::resource('transaksi', TbTransaksiController::class);
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
 });

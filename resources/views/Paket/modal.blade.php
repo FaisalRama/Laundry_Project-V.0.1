@@ -7,7 +7,7 @@
         </div>
         <div class="modal-body">
           <!-- Form -->
-          <form action="/{{ Auth::user()->role == 'admin' ? 'a' : 'k' }}/paket" method="POST">
+          <form action="paket" method="POST">
             @csrf
             <div id="method"></div>
             <div class="form-group">
@@ -37,7 +37,7 @@
               </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </form>

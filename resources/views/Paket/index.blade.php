@@ -47,7 +47,7 @@
                     data-harga="{{ $pk->harga }}" ><a>UPDATE</a></button>
                     
                     <!-- Delete Data -->
-                    <form action="{{ route('paket.destroy', $pk->id) }}" method="POST" style="display: inline">
+                    <form action="/{{ request()->segment(1) }}/paket/{{ $pk->id }}" method="POST" style="display: inline">
                      @csrf
                     @method('DELETE')
                     <button class="btn delete-paket btn-danger" type="button">DELETE</button> &nbsp;
@@ -138,8 +138,8 @@
             modal.find('.modal-body #nama_paket').val(nama_paket)
             modal.find('.modal-body #harga').val(harga)
             modal.find('.modal-footer #btn-submit').text('Update')
+            modal.find('.modal-body form').attr('action', '{{ url(request()->segment(1)) }}/paket/'+id)
             modal.find('.modal-body #method').html('{{ method_field('patch') }}')
-            modal.find('.modal-body form').attr('action', 'paket/'+id)
         }else{
             modal.find('.modal-title').text('Input Data Paket')
             modal.find('.modal-body #id_outlet').val('')

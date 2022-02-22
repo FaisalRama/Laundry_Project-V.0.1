@@ -9,13 +9,13 @@
             <div class="form-group row col-6">
               <label for="staticEmail" class="col-sm-4 col-form-label">Tanggal Transaksi :</label>
               <div class="col-sm-6">
-                <input type="date" class="form-control" value="{{ date('Y-m-d') }}">
+                <input type="date" class="form-control" value="{{ date('Y-m-d') }}" name="tgl">
               </div>
             </div>
             <div class="form-group row col-6">
               <label for="inputPassword" class="col-4 col-form-label">Estimasi Selesai!</label>
               <div class="col-6 ml-auto">
-                <input type="text" class="form-control ml-auto" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . '+3 day')) }}">
+                <input type="text" class="form-control ml-auto" value="{{ date('Y-m-d', strtotime(date('Y-m-d') . '+3 day')) }}" name="batas_waktu">
               </div>
             </div>
           </div>
@@ -79,7 +79,7 @@
                     <label for="">Pembayaran</label>
                     <input type="text" class="form-control" name="bayar" style="width:170px" value="0">
                     <div>
-                      <button class="btn btn-primary" style="margin-top:10px;width:170px">Bayar</button>
+                      <button class="btn btn-primary" style="margin-top:10px;width:170px" type="submit" required>Bayar</button>
                     </div>
                   </td>
                 </tr>
@@ -103,9 +103,6 @@
                 <tr>
                   <td colspan="3" align="right" >Biaya Tambahan</td>
                   <td><input type="number" name="biaya_tambahan" style="width:140px" value="0"></td>
-                  <div>
-                    <button class="btn btn-primary" style="margin-top:10px;width:170px" type="submit">Lah</button>
-                  </div>
                 </tr>
             </tfoot>
           </table>
@@ -149,7 +146,7 @@
                   <tr>
                       <td>
                         {{ $i = (isset($i)?++$i:$i=1) }}
-                        <input type="hidden" class="idMember" name="idMember" value="{{ $b->id }}">
+                        <input type="hidden" class="idMember" name="id_member" value="{{ $b->id }}">
                       </td>
                       <td>{{ $b->nama }}</td>
                       <td>{{ $b->jenis_kelamin }}</td>
@@ -195,7 +192,7 @@
                       <tr>
                         <td>
                           {{ $i = (isset($i)?++$i:$i=1) }}
-                          <input type="hidden" class="idPaket" name="idPaket" value="{{ $p->id }}">
+                          <input type="hidden" class="idPaket" value="{{ $p->id }}">
                         </td>
                         <td>{{ $p->nama_paket }}</td>
                         <td>{{ $p->harga }}</td>
