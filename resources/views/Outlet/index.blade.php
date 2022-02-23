@@ -44,7 +44,7 @@
                     data-tlp="{{ $out->tlp }}" ><a>UPDATE</a></button>
                     
                     <!-- Delete Data -->
-                    <form action="/{{ request()->segment(1) }}/outlet/{{ $out->id }}" method="POST" style="display: inline">
+                    <form action="{{ route('outlet.destroy', $bi->id) }}" method="POST" style="display: inline">
                      @csrf
                     @method('DELETE')
                     <button class="btn delete-outlet btn-danger" type="button">DELETE</button> &nbsp;

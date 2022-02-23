@@ -6,7 +6,7 @@
         <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="transaksi">Transaksi</a></li>
-            <li><a href="detail_transaksi">detail_transaksi</a></li>
+            <li><a href="laporan">Laporan</a></li>
           </ul>
         </li>
 

@@ -15,7 +15,7 @@ class TbDetailTransaksiController extends Controller
      */
     public function index()
     {
-        return view('Detail_Trx.index' , [
+        return view('Transaksi.data' , [
             'detail_transaksi' => tb_detail_transaksi::all()
         ]);
     }
