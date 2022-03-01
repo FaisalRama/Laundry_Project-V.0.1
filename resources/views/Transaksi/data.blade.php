@@ -1,6 +1,51 @@
 <div class="collapse" id="dataLaundry">
     <div class="card-body">
-      <h3>Data</h3>
+      <h3>Datas</h3>
+
+      <table id="tbl-barang" class="table table-hover">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>Kode Transaksi</th>
+            <th>Nama Member</th>
+            <th>Nama Paket</th>
+            <th>Tanggal</th>
+            <th>Batas Waktu</th>
+            <th>Status</th>
+            <th>Pembayaran</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach ($transaksi as $out)
+
+            <td>{{ $i = (isset($i)?++$i:$i=1) }}</td>
+            <td>{{ $out->nama }}</td>
+            <td>{{ $out->alamat }}</td>
+            <td>{{ $out->tlp }}</td>
+            <td>
+                <!-- Update Data -->
+                <button class="btn edit-outlet btn-success" type="button"
+                data-toggle="modal"
+                data-target="#IsiBarang"
+                data-mode="edit"
+                data-id="{{ $out->id }}"
+                data-nama="{{ $out->nama }}"
+                data-alamat="{{ $out->alamat }}"
+                data-tlp="{{ $out->tlp }}" ><a>UPDATE</a></button>
+                
+                <!-- Delete Data -->
+                <form action="{{ route('outlet.destroy', $out->id) }}" method="POST" style="display: inline">
+                 @csrf
+                @method('DELETE')
+                <button class="btn delete-outlet btn-danger" type="button">DELETE</button> &nbsp;
+                </form>
+            </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+
     </div>
   </div>  
 

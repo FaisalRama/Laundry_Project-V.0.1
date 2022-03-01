@@ -22,7 +22,8 @@ class TbTransaksiController extends Controller
         $data['paket'] = tb_paket::where('id_outlet', auth()->user()->id_outlet)->get();
         return view('Transaksi.index',[
                 'member' => tb_member::all(),
-                'paket' => tb_paket::all()
+                'paket' => tb_paket::all(),
+                'transaksi' => tb_transaksi::all()
         ]);
     }
 

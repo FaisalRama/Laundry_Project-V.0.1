@@ -7,7 +7,7 @@
         <li><a href="home"><i class="fa fa-home"></i> Home </a></li>
 
         {{-- Barang Investaris --}}
-        <li><a href="barang_investaris"><i class="fa fa-edit"></i> Barang Investaris </a></li>
+        <li><a href="barang_investaris"><i class="fa fa-circle"></i> Barang Investaris </a></li>
 
         {{-- Transaksi --}}
         <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
