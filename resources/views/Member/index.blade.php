@@ -13,6 +13,16 @@
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#IsiBarang">
             <i> Isi Data!</i>
         </button>
+        <button type="button" class="btn btn-primary">
+            <a href="{{ route('export-member') }}" style="color:white">
+                <i class="fa fa-file-excel-o"> Export Xls</i>
+            </a>
+        </button>
+        {{-- <button type="button" id="btn-expor-pdf" class="btn btn-primary">
+            <i class="fa fa-file-pdf-o"></i> Export Pdf
+        </button> --}}
+
+        
 
 <!-- READ DATA -->
         <table id="tbl-barang" class="table table-hover">
@@ -166,6 +176,12 @@
             modal.find('.modal-footer #btn-submit').text('Submit')
         }
     })
+
+    // Export Xls/Excel
+    // $('#btn-export-xls').on('click', function(e){
+    //     window.location = '{{ url("member/export/xls") }}'
+    // })
+
     });
 </script>
 @endpush

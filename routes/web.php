@@ -49,6 +49,7 @@ function(){
     Route::resource('transaksi', TbTransaksiController::class);
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class], 'index');
+    Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 

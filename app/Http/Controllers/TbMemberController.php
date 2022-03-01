@@ -7,6 +7,9 @@ use App\Http\Requests\Storetb_memberRequest;
 use App\Http\Requests\Updatetb_memberRequest;
 use Illuminate\Http\Request;
 
+use App\Exports\MemberExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class TbMemberController extends Controller
 {
     /**
@@ -106,5 +109,11 @@ class TbMemberController extends Controller
     {
         tb_member::find($id)->delete();
         return redirect(request()->segment(1).'/member')->with('success', 'Product Has Been Deleted');
+    }
+
+    // Export Function to Xls/Excel
+    public function export() 
+    {
+        return Excel::download(new MemberExport, 'members.xlsx');
     }
 }
