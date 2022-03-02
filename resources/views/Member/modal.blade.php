@@ -1,6 +1,6 @@
 <!-- Isi Data -->
 
-<!-- Modal -->
+<!-- Modal Create & Update -->
 <div class="modal fade" id="IsiBarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog" role="document">
     <div class="modal-content">
@@ -43,6 +43,31 @@
   </div>
 </div>
 
+{{-- Modal Pilih File Untuk Import Xls --}}
+<div class="modal fade" id="Import" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> Pilih File Excel </h5>
+          {{-- <span aria-hidden="true">&times;</span> --}}
+      </div>
+      {{-- Form mesti dibawah modal body agar JSnya bekerja --}}
+          <div class="modal-body">
+            <form method="POST" action="import-excel" enctype="multipart/form-data">
+              @csrf
+							<div class="form-group">
+								<input type="file" name="file" required="required">
+							</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Import</button>
+      </div>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
 {{-- Old Modal --}}
 {{-- <div class="modal fade" id="IsiBarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

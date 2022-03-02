@@ -10,6 +10,7 @@ use App\Http\Controllers\TbOutletController;
 use App\Http\Controllers\TbPaketController;
 use App\Http\Controllers\TbTransaksiController;
 use App\Http\Controllers\TbUserController;
+use App\Policies\TbMemberPolicy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,7 @@ function(){
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class], 'index');
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
+    Route::post('import-excel', [TbMemberController::class, 'import']);
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 

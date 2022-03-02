@@ -10,14 +10,24 @@
 <!-- Tambah Data Member -->
 <div class="card">
     <div class="card-body">
+        {{-- Create Data --}}
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#IsiBarang">
             <i> Isi Data!</i>
         </button>
+
+        {{-- Export Excel --}}
         <button type="button" class="btn btn-primary">
             <a href="{{ route('export-member') }}" style="color:white">
                 <i class="fa fa-file-excel-o"> Export Xls</i>
             </a>
         </button>
+        
+        {{-- Import Excel --}}
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Import">
+            <i class="fa fa-file-excel-o"> Import Xls </i>
+        </button>
+  
+
         {{-- <button type="button" id="btn-expor-pdf" class="btn btn-primary">
             <i class="fa fa-file-pdf-o"></i> Export Pdf
         </button> --}}
@@ -119,6 +129,12 @@
     $(function(){
         // Data Table
         $('#tbl-barang').DataTable()
+
+        // Data Table Ber-Button (AdminLTE)
+        // $('#tbl-barang').DataTable({
+        //     "responsive": true, "lengthChange":false, "autoWidth":false,
+        //     "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        // }).buttons().container().appendTo("#tbl-barang_wrapper .col-md-6:eq(0)");
 
         // Alert
         $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
