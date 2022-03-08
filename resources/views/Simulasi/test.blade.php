@@ -104,6 +104,15 @@
           // Property
           let dataKaryawan = []
 
+          // Sort
+          // Event ketika di klik tombol sort
+        $('#sorting').on('click', function(){
+          dataKaryawan = insertionSort(dataKaryawan, 'id')
+
+          $('#tblKaryawan tbody').html(showData(dataKaryawan))
+          console.log(dataKaryawan)
+        })
+
           // Events
           $('#formKaryawan').on('submit', function(e){
             e.preventDefault()
@@ -133,7 +142,7 @@
         // Insert Sorting
         function insertionSort(arr, key)
         {
-          let i, j, id, value;
+          let i, j, id, value; // Penjelasan :
           for (i = 1; i < arr.length; i++)
           {
             value = arr[i];
@@ -149,12 +158,5 @@
           return arr
         }
 
-        // Event ketika di klik tombol sort
-        $('#sorting').on('click', function(){
-          dataKaryawan = insertionSort(dataKaryawan, 'id')
-
-          $('#tblKaryawan tbody').html(showData(dataKaryawan))
-          console.log(dataKaryawan)
-        })
     </script>
 @endpush
