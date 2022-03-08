@@ -30,6 +30,12 @@
 
         <!-- Laporan -->
         <li><a href="laporan"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Laporan </span></a></li>
+
+        {{-- Simulasi Data --}}
+        <li><a href="data_karyawan"><i class="fa fa-table" aria-hidden="true"></i> 
+          Simulasi Data Karyawan 
+        </span></a></li>
+
       </ul>
     </div>
     <div class="menu_section">
