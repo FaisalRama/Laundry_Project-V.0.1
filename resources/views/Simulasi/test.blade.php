@@ -62,6 +62,10 @@
               <h5 class="modal-title" id="exampleModalLongTitle">Data</h5>
             </div>
                 <div class="modal-body">
+                  {{-- tombol sorting --}}
+                  <div>
+                    <button class="btn btn-success" type="button" id="sorting">Sort</button>
+                  </div>
                     <table id="tblKaryawan" class="table table-stripped table-compact">
                         <thead>
                           <tr>
@@ -125,5 +129,32 @@
           })
           return row
         }
+
+        // Insert Sorting
+        function insertionSort(arr, key)
+        {
+          let i, j, id, value;
+          for (i = 1; i < arr.length; i++)
+          {
+            value = arr[i];
+            id = arr[i][key]
+            j = i - 1;
+            while (j >= 0 && arr[j][key] > id)
+            {
+              arr[j + 1] = arr[j];
+              j = j - 1;
+            }
+            arr[j + 1] = value;
+          }
+          return arr
+        }
+
+        // Event ketika di klik tombol sort
+        $('#sorting').on('click', function(){
+          dataKaryawan = insertionSort(dataKaryawan, 'id')
+
+          $('#tblKaryawan tbody').html(showData(dataKaryawan))
+          console.log(dataKaryawan)
+        })
     </script>
 @endpush

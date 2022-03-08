@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class SimulasiController extends Controller
 {
     public function index(){
-        return view('Simulasi.test');
+        return view('Simulasi.test2');
     }
 }
