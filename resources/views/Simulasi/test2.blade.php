@@ -48,7 +48,7 @@
 
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="submit" class="btn btn-primary">Reset</button>
+              <button type="submit" class="btn btn-default">Reset</button>
 
             </div>
           </form>
@@ -83,8 +83,9 @@
 @push('script')
     <script>
         // methods
-        function insert(dataBuku){
+        function insert(){
             const form = $('#formBuku').serializeArray()
+            let dataBuku = JSON.parse(localStorage.getItem('dataBuku')) || []
             let newData = {}
             form.forEach(function(item, index){
                 let name = item['name']
@@ -101,25 +102,28 @@
 
         // After Load
         $(function(){
+            let dataBuku = JSON.parse(localStorage.getItem('dataBuku')) || []
             // Initialize
-            $('#tblBuku tbody').html(showData())
-
+            $('#tblBuku tbody').html(showData(dataBuku))
+            
             // Events
             $('#formBuku').on('submit', function(e){
-                console.log(e)
                 e.preventDefault()
-                dataBuku.push(insert(dataBuku))
+                dataBuku.push(insert())
+                console.log(dataBuku)
+                  $('#tblBuku tbody').html(showData(dataBuku))
+
             })
         })
 
         // Tampilkan Data
-        function showData(){
+        function showData(dataBuku){
           let row = ''
-          let arr = JSON.parse(localStorage.getItem('dataBuku')) || []
-          if(arr.length == 0){
+        //   let arr = JSON.parse(localStorage.getItem('dataBuku')) || []
+          if(dataBuku.length == 0){
             return row = `<tr><td colspan ="6" align="center">Belum ada data</td></tr>`
           }
-          arr.forEach(function(item, index){
+          dataBuku.forEach(function(item, index){
             row += `<tr>`
             row += `<td>${item['id']}</td>`
             row += `<td>${item['jb']}</td>`
@@ -132,6 +136,6 @@
           return row
         }
 
-        
+
     </script>
 @endpush
