@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PaketExport;
 use App\Models\tb_paket;
 use App\Http\Requests\Storetb_paketRequest;
 use App\Http\Requests\Updatetb_paketRequest;
 use App\Models\tb_outlet;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TbPaketController extends Controller
 {
@@ -99,5 +101,12 @@ class TbPaketController extends Controller
     {
         tb_paket::find($id)->delete();
         return redirect(request()->segment(1).'/paket')->with('success', 'Product Has Been Deleted');
+    }
+
+    // Export Excel
+    public function export()
+    {
+        $date = date('Y-m-d');
+        return Excel::download(new PaketExport, $date.'_paket.xlsx');
     }
 }

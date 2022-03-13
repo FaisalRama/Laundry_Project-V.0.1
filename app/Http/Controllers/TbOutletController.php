@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OutletExport;
 use App\Models\tb_outlet;
 use App\Http\Requests\Storetb_outletRequest;
 use App\Http\Requests\Updatetb_outletRequest;
 use App\Models\tb_member;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TbOutletController extends Controller
 {
@@ -97,5 +99,11 @@ class TbOutletController extends Controller
     {
         tb_outlet::find($id)->delete();
         return redirect(request()->segment(1).'/outlet')->with('success', 'Product Has Been Deleted');
+    }
+
+    // Export Function to Xls/Excel
+    public function export() 
+    {
+        return Excel::download(new OutletExport, 'outlets.xlsx');
     }
 }

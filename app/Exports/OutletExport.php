@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\tb_member;
+use App\Models\tb_outlet;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -17,23 +17,23 @@ use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
 use \Maatwebsite\Excel\Sheet;
 
-class MemberExport implements FromCollection, WithHeadings, WithEvents
+class OutletExport implements FromCollection, WithHeadings, WithEvents
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return tb_member::all();
+        return tb_outlet::all();
     }
 
+    // Heading pada excel
     public function headings(): array
     {
         return [
             'No',
             'Nama',
             'Alamat',
-            'Jenis Kelamin',
             'No. Telepon',
             'Dibuat Saat',
             'Terakhir di-Edit saat'
@@ -51,20 +51,19 @@ class MemberExport implements FromCollection, WithHeadings, WithEvents
                 $event->sheet->getColumnDimension('D')->setAutoSize(true);
                 $event->sheet->getColumnDimension('E')->setAutoSize(true);
                 $event->sheet->getColumnDimension('F')->setAutoSize(true);
-                $event->sheet->getColumnDimension('G')->setAutoSize(true);
 
                 $event->sheet->insertNewRowBefore(1,2);
-                $event->sheet->mergeCells('A1:G1');
-                $event->sheet->setCellValue('A1', 'DATA MEMBER CUCIAN !');
+                $event->sheet->mergeCells('A1:F1');
+                $event->sheet->setCellValue('A1', 'DATA OUTLET LAUNDRY !');
                 $event->sheet->getStyle('A1')->getFont()->setBold(true);
                 $event->sheet->getStyle('A1')->getAlignment()->setHorizontal(
                     \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-
-                $event->sheet->getStyle('A3:G'.$event->sheet->getHighestRow())->applyFromArray([
+                
+                $event->sheet->getStyle('A3:F'.$event->sheet->getHighestRow())->applyFromArray([
                     'borders' => [
                         'allborders' => [
                             'borderstyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                            'color' => ['argb' => '000000']
+                            'color' => ['argb' => 'C8AA3B']
                         ]
                     ]
                 ]);
