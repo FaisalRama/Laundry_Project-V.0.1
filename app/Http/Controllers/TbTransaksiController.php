@@ -23,7 +23,8 @@ class TbTransaksiController extends Controller
         return view('Transaksi.index',[
                 'member' => tb_member::all(),
                 'paket' => tb_paket::all(),
-                'transaksi' => tb_transaksi::all()
+                'transaksi' => tb_transaksi::all(),
+                'detail_transaksi' => tb_detail_transaksi::all()
         ]);
     }
 

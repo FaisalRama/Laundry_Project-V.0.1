@@ -24,6 +24,7 @@ class PaketExport implements FromCollection, WithHeadings, WithEvents
     */
     public function collection()
     {
+        // return tb_paket::where('id_outlet', auth()->user()->id_outlet)->get();
         return tb_paket::all();
     }
 
