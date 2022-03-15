@@ -10,6 +10,7 @@ use App\Models\tb_outlet;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
+// Class
 class TbPaketController extends Controller
 {
     /**

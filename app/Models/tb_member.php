@@ -15,4 +15,9 @@ class tb_member extends Model
                             'alamat', 
                             'jenis_kelamin', 
                             'tlp'];
+    
+    public function jemputJoin()
+    {
+        return $this->hasMany(jemputlaundry::class);
+    }
 }

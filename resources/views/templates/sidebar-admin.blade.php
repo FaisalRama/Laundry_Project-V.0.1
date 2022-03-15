@@ -16,6 +16,7 @@
                     <li><a href="laporan">Laporan</a></li>
                 </ul>
             </li>
+
             {{-- Member --}}
             <li><a href="member"><i class="fa fa-table"></i> Member
                     <!-- <span class="fa fa-chevron-down">--> </span>
@@ -30,15 +31,26 @@
             <!-- User Management -->
             <li><a href="user"><i class="fa fa-user" aria-hidden="true"></i> User </span></a></li>
 
-
-            {{-- Simulasi Data --}}
+            {{-- Simulasi Data
             <li><a href="data_karyawan"><i class="fa fa-table" aria-hidden="true"></i>
                     Simulasi Data Karyawan
                     </span></a></li>
 
             {{-- Simulasi Transaksi --}}
-            <li><a href="gaji_karyawan"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            {{-- <li><a href="gaji_karyawan"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                     Simulasi Gaji Karyawan
+                    </span></a></li> --}}
+
+            {{-- Simulasi Karyawan --}}
+            <li><a><i class="fa fa-table"></i> Simulasi <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="data_karyawan">Data Karyawan</a></li>
+                    <li><a href="gaji_karyawan">Gaji Karyawan</a></li>
+                </ul>
+            </li>
+
+            {{-- Penjemputan Laundry --}}
+            <li><a href="jemput_laundry"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Penjemputan Laundry
                     </span></a></li>
 
         </ul>
