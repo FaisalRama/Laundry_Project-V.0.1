@@ -28,7 +28,7 @@
                                 <label for="nama">Nama : </label>
                                 <input type="text" class="form-control col-" id="nama" name="nama" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row col-6">
                                 <label for="jk">Jenis Kelamin : </label>
                                 <div class="form-check">
                                     <input type="radio" class="form-check-input" value="L" name="jk" id="jk">

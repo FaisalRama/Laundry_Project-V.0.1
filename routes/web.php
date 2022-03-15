@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangInventarisController;
+use App\Http\Controllers\GajiKaryawanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
@@ -56,6 +57,7 @@ function(){
     Route::get('pakets/export/', [TbPaketController::class, 'export'])->name('export-paket');
     Route::post('import-excel', [TbMemberController::class, 'import']);
     Route::get('data_karyawan', [SimulasiController::class, 'index']);
+    Route::get('gaji_karyawan', [GajiKaryawanController::class, 'index']);
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 
