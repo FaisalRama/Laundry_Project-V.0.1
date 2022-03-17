@@ -102,4 +102,12 @@ class JemputlaundryController extends Controller
         jemputlaundry::find($id)->delete();
         return redirect(request()->segment(1).'/jemput_laundry')->with('success', 'Product Has Been Deleted');
     }
+
+    public function status(Request $request){
+        $data = jemputlaundry::where('id',$request->id)->first();
+        $data->status = $request->status;
+        $update = $data->save();
+
+        return 'Data Gagal Ditarik';
+    }
 }

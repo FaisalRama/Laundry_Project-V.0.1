@@ -15,4 +15,9 @@ class tb_detail_transaksi extends Model
                             'id_paket', 
                             'qty',
                             'keterangan'];
+    
+    public function paketJoin()
+    {
+        return $this->belongsTo(tb_paket::class, 'id_paket');
+    }
 }

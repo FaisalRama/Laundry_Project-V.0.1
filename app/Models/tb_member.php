@@ -20,4 +20,9 @@ class tb_member extends Model
     {
         return $this->hasMany(jemputlaundry::class);
     }
+
+    public function transaksiJoin()
+    {
+        return $this->hasMany(tb_transaksi::class);
+    }
 }

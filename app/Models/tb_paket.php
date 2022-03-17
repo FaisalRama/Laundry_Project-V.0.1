@@ -21,4 +21,9 @@ class tb_paket extends Model
         return $this -> belongsTo(tb_outlet::class, "id_outlet");
     }
 
+    // Relasi dengan TB_Detail
+    public function detailTrxJoin(){
+        return $this -> hasMany(tb_detail_transaksi::class);
+    }
+
 }

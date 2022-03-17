@@ -14,4 +14,9 @@ class tb_outlet extends Model
     protected $fillable = ['nama', 
                             'alamat', 
                             'tlp'];
+
+    public function transaksiJoin()
+    {
+        return $this->hasMany(tb_transaksi::class);
+    }
 }

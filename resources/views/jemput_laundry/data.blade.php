@@ -37,23 +37,34 @@
                     })
             })
 
+            $('#tbl-barang').on('change', '.status', function() {
+                let status = $(this).closest('tr').find('.status').val()
+                let id = $(this).closest('tr').find('.id').val()
+                let data = {
+                    id: id,
+                    status: status,
+                    _token: "{{ csrf_token() }}"
+                };
+                $.post('{{ route('status') }}', data, function(msg) {
+                    alert('Status Penjemputan Berhasil Diubah !')
+                })
+                console.log(status)
+                console.log(data)
+            })
+
             // Edit dan Input Kelas -
             $('#IsiBarang').on('show.bs.modal', function(event) {
                 let button = $(event.relatedTarget)
                 console.log(button)
                 let id = button.data('id')
-                let nama_pelanggan = button.data('nama_pelanggan')
-                let alamat_pelanggan = button.data('alamat_pelanggan')
-                let no_telepon = button.data('no_telepon')
+                let id_member = button.data('id_member')
                 let petugas_penjemput = button.data('petugas_penjemput')
                 let status = button.data('status')
                 let mode = button.data('mode')
                 let modal = $(this)
                 if (mode === "edit") {
                     modal.find('.modal-title').text('Edit Data Penjemputan Laundry')
-                    modal.find('.modal-body #nama_pelanggan').val(nama_pelanggan)
-                    modal.find('.modal-body #alamat_pelanggan').val(alamat_pelanggan)
-                    modal.find('.modal-body #no_telepon').val(no_telepon)
+                    modal.find('.modal-body #id_member').val(id_member)
                     modal.find('.modal-body #petugas_penjemput').val(petugas_penjemput)
                     modal.find('.modal-body #status').val(status)
                     modal.find('.modal-footer #btn-submit').text('Update')
@@ -62,9 +73,7 @@
                     modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
                 } else {
                     modal.find('.modal-title').text('Input Data Penjemputan Laundry')
-                    modal.find('.modal-body #nama_pelanggan').val('')
-                    modal.find('.modal-body #alamat_pelanggan').val('')
-                    modal.find('.modal-body #no_telepon').val('')
+                    modal.find('.modal-body #id_member').val('')
                     modal.find('.modal-body #petugas_penjemput').val('')
                     modal.find('.modal-body #status').val('')
                     modal.find('.modal-body #method').html("")

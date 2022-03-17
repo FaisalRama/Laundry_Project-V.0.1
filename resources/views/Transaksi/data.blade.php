@@ -22,8 +22,8 @@
                     @endforeach
                     <td>{{ $i = isset($i) ? ++$i : ($i = 1) }}</td>
                     <td>{{ $t->kode_invoice }}</td>
-                    <td>{{ $t->id_member }}</td>
-                    <td>{{ $dt->id_paket }}</td>
+                    <td>{{ $t->memberJoin->nama }}</td>
+                    <td>{{ $dt->paketJoin->nama_paket }}</td>
                     <td>{{ $t->tgl }}</td>
                     <td>{{ $t->batas_waktu }}</td>
                     <td>{{ $t->status }}</td>

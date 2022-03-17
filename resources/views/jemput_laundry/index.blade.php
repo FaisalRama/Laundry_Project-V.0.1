@@ -48,40 +48,29 @@
                 <tbody>
                     @foreach ($jemput_laundry as $mbr)
                         <tr>
-                            <td>{{ $i = isset($i) ? ++$i : ($i = 1) }}</td>
+                            <td>{{ $i = isset($i) ? ++$i : ($i = 1) }}<input type="text" hidden class="id"
+                                    value="{{ $mbr->id }}"> </td>
                             <td>{{ $mbr->memberJoin->nama }}</td>
                             <td>{{ $mbr->memberJoin->alamat }}</td>
                             <td>{{ $mbr->memberJoin->tlp }}</td>
                             <td>{{ $mbr->petugas_penjemput }}</td>
                             <td>
-                                <!--
-                                                        Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
-                                                        MySql akan sesuai yg kita inginkan
-                                                    -->
-                                @switch($mbr->status)
-                                    @case('tercatat')
-                                        Tercatat
-                                    @break
-
-                                    @case('penjemputan')
-                                        Proses Penjemputan
-                                    @break
-
-                                    @case('selesai')
-                                        Selesai!
-                                    @break
-
-                                    @default
-                                @endswitch
-                                {{-- {{ $mbr->jenis_kelamin }} --}}
+                                <select name="status" class="status form-control">
+                                    <option value="tercatat" {{ $mbr->status == 'tercatat' ? 'selected' : '' }}>Tercatat
+                                    </option>
+                                    <option value="penjemputan" {{ $mbr->status == 'penjemputan' ? 'selected' : '' }}>
+                                        Penjemputan</option>
+                                    <option value="selesai" {{ $mbr->status == 'selesai' ? 'selected' : '' }}>Selesai
+                                    </option>
+                                </select>
                             </td>
+                            {{-- <td hidden>{{ $loop->iteration }} 
+                            </td> --}}
                             <td>
                                 <!-- Update Data -->
                                 <button class="btn edit-jenlau btn-success" type="button" data-toggle="modal"
                                     data-target="#IsiBarang" data-mode="edit" data-id="{{ $mbr->id }}"
-                                    data-nama_pelanggan="{{ $mbr->nama_pelanggan }}"
-                                    data-alamat_pelanggan="{{ $mbr->alamat_pelanggan }}"
-                                    data-no_telepon="{{ $mbr->no_telepon }}"
+                                    data-id_member="{{ $mbr->id_member }}"
                                     data-petugas_penjemput="{{ $mbr->petugas_penjemput }}"
                                     data-status="{{ $mbr->status }}"><a>UPDATE</a></button>
 

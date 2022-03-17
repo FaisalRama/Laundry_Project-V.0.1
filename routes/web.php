@@ -52,6 +52,7 @@ function(){
     Route::resource('outlet', TbOutletController::class);
     Route::resource('transaksi', TbTransaksiController::class);
     Route::resource('jemput_laundry', JemputlaundryController::class);
+    Route::post('/status', [JemputlaundryController::class ,'status'])->name('status');
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
