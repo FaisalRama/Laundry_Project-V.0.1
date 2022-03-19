@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PenjemputanExport;
 use App\Models\jemputlaundry;
 use App\Http\Requests\StorejemputlaundryRequest;
 use App\Http\Requests\UpdatejemputlaundryRequest;
 use App\Models\tb_member;
 use Illuminate\Http\Request;
- 
+use Maatwebsite\Excel\Facades\Excel;
+
 // Class
 class JemputlaundryController extends Controller
 {
@@ -109,5 +111,11 @@ class JemputlaundryController extends Controller
         $update = $data->save();
 
         return 'Data Gagal Ditarik';
+    }
+
+    // Export Function to Xls/Excel
+    public function export() 
+    {
+        return Excel::download(new PenjemputanExport, 'data_penjemputan_laundry.xlsx');
     }
 }

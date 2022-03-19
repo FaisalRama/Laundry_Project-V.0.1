@@ -14,7 +14,7 @@
 
             {{-- Export Excel --}}
             <button type="button" class="btn btn-primary">
-                <a href="" style="color:white">
+                <a href="{{ route('export-jenlau') }}" style="color:white">
                     <i class="fa fa-file-excel-o"> Export Xls</i>
                 </a>
             </button>

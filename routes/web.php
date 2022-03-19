@@ -58,6 +58,7 @@ function(){
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
     Route::get('outlets/export/', [TbOutletController::class, 'export'])->name('export-outlet');
     Route::get('pakets/export/', [TbPaketController::class, 'export'])->name('export-paket');
+    Route::get('jemput_laundries/export/', [JemputlaundryController::class, 'export'])->name('export-jenlau');
     Route::post('import-excel', [TbMemberController::class, 'import']);
     Route::get('data_karyawan', [SimulasiController::class, 'index']);
     Route::get('gaji_karyawan', [GajiKaryawanController::class, 'index']);
