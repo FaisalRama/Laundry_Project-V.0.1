@@ -42,8 +42,8 @@
                     <div class="form-group row col-6">
                         <label for="" class="col-6 col-form-label" style="margin-right: 15px">Status Menikah</label>
                         <select class="col-5 custom-select form-control-border" id="status" name="status">
-                            <option value="Single">Single</option>
-                            <option value="Couple">Couple</option>
+                            <option value="couple">Couple</option>
+                            <option value="single">Single</option>
                         </select>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <div class="form-group row col-6">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Jumlah Anak</label>
                         <div class="col-sm-6">
-                            <input type="number" value="0" min="0" class="qty" name="qty" size="2"
+                            <input type="number" value="0" min="0" class="qty" name="qty" id="qty" size="2"
                                 style="width:40px; margin-top: 5px">
                         </div>
                     </div>
@@ -113,13 +113,6 @@
                             </tr>
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <td width="" colspan="6" align="center"
-                                    style="background:black;color:white;font-weight:bold;font-size:1em">TOTAL</td>
-                                <td style="background:#CEC8CB">0</td>
-                                <td style="background:#e4d9d9">0</td>
-                                <td style="background:#CEC8CB">0</td>
-                            </tr>
                         </tfoot>
                     </table>
                 </div>
@@ -193,29 +186,89 @@
                 $('#tblGajiKaryawan tbody').html(showData(dataGajiKaryawan))
                 console.log(dataGajiKaryawan)
             })
+
+            // Status Trigger
+            $('#status').on('change', function() {
+                let value = $('#status').val()
+                console.log(value)
+                if (value == 'single') {
+                    $('#qty').val(0)
+                    $('#qty').attr('readonly', true)
+                } else {
+                    $('#qty').attr('readonly', false)
+
+                }
+            })
             // End Event
         })
 
         // Tampilkan Data
         function showData(dataGajiKaryawan) {
+            var fullawal = 0
+            var fulltunjangan = 0
+            var fulltotal = 0
+            let total = 0
+            let status = 0
+            let tunjangan = 0
+            let awal = 2000000
             let row = ''
             // let arr = JSON.parse(localStorage.getItem('dataKaryawan')) || []
             if (dataGajiKaryawan.length == 0) {
                 return row = `<tr><td colspan ="9" align="center">Belum ada data</td></tr>`
             }
-            dataGajiKaryawan.forEach(function(item, index) {
-                row += `<tr>`
+
+            dataGajiKaryawan.forEach(function(item, index, set) {
+                set = new Date(item['tgl'])
+                var ageDifMs = Date.now() - set.getTime();
+                if (ageDifMs > 0) {
+                    var ageDate = new Date(ageDifMs)
+                    var newAge = Math.abs(ageDate.getUTCFullYear() - 1970)
+                    var tahun = newAge * 150000
+                } else {
+                    var tahun = 0
+                }
+
+                if (item['qty'] >= 2) {
+                    var child = 2
+                } else if (item['qty'] != 1) {
+                    var child = 0
+                } else {
+                    var child = 1
+                }
+
+                let qty = 150000 * child
+                status = (item['status'] === 'couple' ? 250000 : 0)
+                tunjangan = qty + status + tahun
+                total = tunjangan + awal
+
+
+                row += '<tr>'
                 row += `<td>${item['id_karyawan']}</td>`
                 row += `<td>${item['nama_karyawan']}</td>`
                 row += `<td>${item['jk']}</td>`
                 row += `<td>${item['status']}</td>`
                 row += `<td>${item['qty']}</td>`
                 row += `<td>${item['tgl']}</td>`
-                row += `<td>2000000</td>`
-                row += `<td>${item['']}</td>`
-                row += `<td>${item['']}</td>`
-                row += `</tr>`
+                row += `<td>${awal}</td>`
+                row += `<td>${tunjangan}</td>`
+                row += `<td>${total}</td>`
+                row += '</tr>'
+
+                fullawal += awal
+                fulltunjangan += tunjangan
+                fulltotal += total
+                console.log(fullawal + ' + ' + awal)
+
+
             })
+            row += '<tr>'
+            row += `<td width="" colspan="6" align="center"
+                    style="background:black;color:white;font-weight:bold;font-size:1em">TOTAL</td>`
+            row += `<td style="background:#CEC8CB">${fullawal}</td>`
+            row += `<td style="background:#e4d9d9">${fulltunjangan}</td>`
+            row += `<td style="background:#CEC8CB">${fulltotal}</td>`
+            row += '</tr>'
+
             return row
         }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJemputlaundriesTable extends Migration
+class PenjemputanLaundry extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateJemputlaundriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('jemputlaundries', function (Blueprint $table) {
+        Schema::create('penjemputan_laundry', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('id_member');
             $table->string('petugas_penjemput', 255);
@@ -32,6 +32,6 @@ class CreateJemputlaundriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jemputlaundries');
+        Schema::dropIfExists('penjemputan_laundry');
     }
 }

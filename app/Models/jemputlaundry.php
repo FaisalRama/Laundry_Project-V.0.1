@@ -14,13 +14,7 @@ class jemputlaundry extends Model
     public $incrementing = true;
 
     // Property
-    protected $table = 'jemputlaundries';
-
-    // Property
-    protected $fillable = ['id_member', 
-                            'petugas_penjemput',
-                            'status'];
-    // Property
+    protected $table = 'penjemputan_laundry';
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     // Method
