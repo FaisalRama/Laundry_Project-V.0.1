@@ -6,6 +6,7 @@ use App\Exports\PaketExport;
 use App\Models\tb_paket;
 use App\Http\Requests\Storetb_paketRequest;
 use App\Http\Requests\Updatetb_paketRequest;
+use App\Imports\PaketImport;
 use App\Models\tb_outlet;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -109,5 +110,24 @@ class TbPaketController extends Controller
     {
         $date = date('Y-m-d');
         return Excel::download(new PaketExport, $date.'_paket.xlsx');
+    }
+
+    // Import Xls
+    public function importData(Request $request)
+    {
+        // validasi
+		$request->validate([
+			'file' => 'file|mimes:xlsx, csv, xls'
+		]);
+ 
+        if ($request) {
+            Excel::import(new PaketImport, $request->file('file'));
+        } else {
+            return back()->withErrors([
+                'file' => 'File Bukan Excel'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'data ditambahkan!');
     }
 }

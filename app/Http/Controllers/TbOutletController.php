@@ -6,6 +6,7 @@ use App\Exports\OutletExport;
 use App\Models\tb_outlet;
 use App\Http\Requests\Storetb_outletRequest;
 use App\Http\Requests\Updatetb_outletRequest;
+use App\Imports\OutletImport;
 use App\Models\tb_member;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -105,5 +106,24 @@ class TbOutletController extends Controller
     public function export() 
     {
         return Excel::download(new OutletExport, 'outlets.xlsx');
+    }
+
+    // Import Xls
+    public function importData(Request $request)
+    {
+        // validasi
+		$request->validate([
+			'file' => 'file|mimes:xlsx, csv, xls'
+		]);
+ 
+        if ($request) {
+            Excel::import(new OutletImport, $request->file('file'));
+        } else {
+            return back()->withErrors([
+                'file' => 'File Bukan Excel'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'data ditambahkan!');
     }
 }

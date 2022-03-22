@@ -21,12 +21,17 @@
                 </button>
             </a>
 
+            {{-- Import Excel --}}
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Import">
+                <i class="fa fa-file-excel-o"> Import Xls </i>
+            </button>
+
             <!-- READ DATA -->
             <table id="tbl-barang" class="table table-hover">
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Id_Outlet</th>
+                        <th>Nama Outlet</th>
                         <th>Jenis</th>
                         <th>Nama_Paket</th>
                         <th>Harga</th>
@@ -37,7 +42,7 @@
                     @foreach ($paket as $pk)
                         <tr>
                             <td>{{ $i = isset($i) ? ++$i : ($i = 1) }}</td>
-                            <td>{{ $pk->id_outlet }}</td>
+                            <td>{{ $pk->outlet->nama }}</td>
                             <td>{{ $pk->jenis }}</td>
                             <td>{{ $pk->nama_paket }}</td>
                             <td>{{ $pk->harga }}</td>
@@ -88,6 +93,7 @@
             @endif
         </div>
 
+        @include('paket.importmodal')
         @include('paket.modal')
     @endsection
 

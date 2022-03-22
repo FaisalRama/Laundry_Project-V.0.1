@@ -21,6 +21,11 @@
                 </button>
             </a>
 
+            {{-- Import Excel --}}
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Import">
+                <i class="fa fa-file-excel-o"> Import Xls </i>
+            </button>
+
             <!-- READ DATA -->
             <table id="tbl-barang" class="table table-hover">
                 <thead>
