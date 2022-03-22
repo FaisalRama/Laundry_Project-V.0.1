@@ -20,7 +20,7 @@
             </button>
 
             {{-- Import Excel --}}
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Import">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#formImport">
                 <i class="fa fa-file-excel-o"> Import Xls </i>
             </button>
 
@@ -113,5 +113,6 @@
         </div>
 
         @include('jemput_laundry.modal')
+        @include('jemput_laundry.importmodal')
         @include('jemput_laundry.data')
     @endsection

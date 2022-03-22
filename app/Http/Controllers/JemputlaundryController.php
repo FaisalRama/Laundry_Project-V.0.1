@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\PenjemputanExport;
+use App\Imports\PenjemputanImport;
 use App\Models\jemputlaundry;
 use App\Http\Requests\StorejemputlaundryRequest;
 use App\Http\Requests\UpdatejemputlaundryRequest;
@@ -117,5 +118,51 @@ class JemputlaundryController extends Controller
     public function export() 
     {
         return Excel::download(new PenjemputanExport, 'data_penjemputan_laundry.xlsx');
+    }
+
+    public function importData(Request $request)
+    {
+        // validasi
+		$request->validate([
+			'file' => 'file|mimes:xlsx, csv, xls'
+		]);
+ 
+        if ($request) {
+            Excel::import(new PenjemputanImport, $request->file('file'));
+        } else {
+            return back()->withErrors([
+                'file' => 'File Bukan Excel'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'data ditambahkan!');
+        
+		// menangkap file excel
+		// $file = $request->file('file');
+ 
+		// membuat nama file unik
+		// $nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file_member di dalam folder public
+		// $file->move('file_penjemputan',$nama_file);
+ 
+		// import data
+		// Excel::import(new PenjemputanImport, public_path('/file_penjemputan/'.$nama_file));
+ 
+		// notifikasi dengan session
+		// Session::flash('sukses','Data Siswa Berhasil Diimport!');
+ 
+		// alihkan halaman kembali
+		// return redirect()->back()->with('success', 'Import berhasil!');
+
+        // $request->validate([
+        //     'file_import' => 'required|file|mimes:xlsx'
+        // ]);
+
+        // Excel::import(new PickupsImport, $request->file('file_import'));
+
+        // return response()->json([
+        //     'message' => 'Import data berhasil'
+        // ], Response::HTTP_OK);
     }
 }

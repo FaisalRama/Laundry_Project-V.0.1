@@ -2,11 +2,12 @@
 
 namespace App\Imports;
 
-use App\Models\tb_member;
+use App\Models\jemputlaundry;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class MemberImport implements ToModel, WithHeadingRow
+class PenjemputanImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -15,11 +16,10 @@ class MemberImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new tb_member([
-            'nama' => $row['nama'],
-            'alamat' => $row['alamat'],
-            'jenis_kelamin' => $row['jenis_kelamin'],
-            'tlp' => $row['no_telepon']
+        return new jemputlaundry([
+            'id_member' => $row['id_member'],
+            'petugas_penjemput' => $row['nama_petugas_penjemputan'],
+            'status' => $row['status']
         ]);
     }
 

@@ -12,6 +12,8 @@ use App\Models\tb_paket;
 class TbTransaksiController extends Controller
 {
     /**
+     * Menampilkan Halaman Utama Transaksi
+     * Memberikan data untuk member, paket, transaksi, dan detaill_transaksi pada halaman transaksi
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,6 +28,7 @@ class TbTransaksiController extends Controller
         ]);
     }
 
+    // Untuk membuat kode_invoice terbaru setiap menambahkan data baru
     public function generateKodeInvoice(){
         $last = tb_transaksi::orderBy('id', 'desc')->first();
         $last = ($last == null?1:$last->id + 1);
@@ -46,6 +49,7 @@ class TbTransaksiController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Menyimpan data transaksi ke table transaksi dan detailtransaksi di database pdm
      *
      * @param  \App\Http\Requests\Storetb_transaksiRequest  $request
      * @return \Illuminate\Http\Response
