@@ -14,6 +14,7 @@
                 <ul class="nav child_menu">
                     <li><a href="transaksi">Transaksi</a></li>
                     <li><a href="laporan">Laporan</a></li>
+                    <li><a href="simu_barang">Simulasi Transaksi Barang</a></li>
                 </ul>
             </li>
 

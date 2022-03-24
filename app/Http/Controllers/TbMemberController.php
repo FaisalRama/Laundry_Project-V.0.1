@@ -15,6 +15,7 @@ class TbMemberController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Menampilkan Halaman Member, beserta menampilkan data member
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,6 +38,7 @@ class TbMemberController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Untuk Membuat suatu data baru di table_member
      *
      * @param  \App\Http\Requests\Storetb_memberRequest  $request
      * @return \Illuminate\Http\Response
@@ -80,6 +82,7 @@ class TbMemberController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * Untuk mengubah suatu data pada table_member
      *
      * @param  \App\Http\Requests\Updatetb_memberRequest  $request
      * @param  \App\Models\tb_member  $tb_member
@@ -102,6 +105,7 @@ class TbMemberController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Untuk menghapus suatu data pada table_member
      *
      * @param  \App\Models\tb_member  $tb_member
      * @return \Illuminate\Http\Response
@@ -113,12 +117,14 @@ class TbMemberController extends Controller
     }
 
     // Export Function to Xls/Excel
+    // Untuk meng-export data member menjadi file excel
     public function export() 
     {
         return Excel::download(new MemberExport, 'members.xlsx');
     }
 
     // Import Xls
+    // Untuk meng-import data member dari file-excel ke data member
     public function import(Request $request)
     {
         // validasi
@@ -137,9 +143,6 @@ class TbMemberController extends Controller
  
 		// import data
 		Excel::import(new MemberImport, public_path('/file_member/'.$nama_file));
- 
-		// notifikasi dengan session
-		// Session::flash('sukses','Data Siswa Berhasil Diimport!');
  
 		// alihkan halaman kembali
 		return redirect()->back()->with('success', 'Import berhasil!');
