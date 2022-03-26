@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangInventarisController;
+use App\Http\Controllers\DatabarangController;
 use App\Http\Controllers\GajiKaryawanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JemputlaundryController;
@@ -53,7 +54,9 @@ function(){
     Route::resource('outlet', TbOutletController::class);
     Route::resource('transaksi', TbTransaksiController::class);
     Route::resource('jemput_laundry', JemputlaundryController::class);
+    Route::resource('data_barang', DatabarangController::class);
     Route::post('/status', [JemputlaundryController::class ,'status'])->name('status');
+    Route::post('/status', [DatabarangController::class ,'status'])->name('status');
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');

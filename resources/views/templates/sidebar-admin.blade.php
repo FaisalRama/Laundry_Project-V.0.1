@@ -29,6 +29,9 @@
             <!-- Paket -->
             <li><a href="paket"><i class="fa fa-folder-o"></i> Paket </span></a></li>
 
+            <!-- Data Barang -->
+            <li><a href="data_barang"><i class="fa fa-folder"></i> Data Barang </span></a></li>
+
             <!-- User Management -->
             <li><a href="user"><i class="fa fa-user" aria-hidden="true"></i> User </span></a></li>
 

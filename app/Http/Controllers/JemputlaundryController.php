@@ -123,8 +123,8 @@ class JemputlaundryController extends Controller
     public function importData(Request $request)
     {
         // validasi
-		$request->validate([
-			'file' => 'file|mimes:xlsx, csv, xls'
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
 		]);
  
         if ($request) {
@@ -135,8 +135,7 @@ class JemputlaundryController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'data ditambahkan!');
-        
+        return redirect()->back()->with('success', 'all done!');
 		// menangkap file excel
 		// $file = $request->file('file');
  
