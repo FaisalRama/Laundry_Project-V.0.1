@@ -21,7 +21,7 @@ class CreateDatabarangsTable extends Migration
             $table->date('waktu_beli');
             $table->string('supplier', 255);
             $table->enum('status_barang', ['diajukan_beli', 'habis', 'tersedia']);
-            $table->dateTime('waktu_update_status');
+            $table->datetime('waktu_update_status')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

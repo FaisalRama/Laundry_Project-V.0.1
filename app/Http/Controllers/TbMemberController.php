@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Exports\MemberExport;
 use App\Imports\MemberImport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TbMemberController extends Controller
@@ -121,6 +122,17 @@ class TbMemberController extends Controller
     public function export() 
     {
         return Excel::download(new MemberExport, 'members.xlsx');
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = PDF::loadView('Member.pdf',[
+            'member' => tb_member::all()
+        ]);
+
+        return $pdf->stream();
     }
 
     // Import Xls

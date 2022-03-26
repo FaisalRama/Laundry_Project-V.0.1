@@ -115,8 +115,11 @@ class DatabarangController extends Controller
     public function status(Request $request){
         $data = databarang::where('id',$request->id)->first();
         $data->status_barang = $request->status;
+        $data->waktu_update_status = now();
         $update = $data->save();
 
-        return 'Data Gagal Ditarik';
+        return response()->json([
+            'waktu_update_status' => date('Y-m-d h:i:s', strtotime($data->waktu_update_status))
+        ]);
     }
 }

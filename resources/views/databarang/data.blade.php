@@ -45,8 +45,10 @@
                     status: status,
                     _token: "{{ csrf_token() }}"
                 };
-                $.post('{{ route('status') }}', data, function(msg) {
+                let row = $(this).closest('tr')
+                $.post('{{ route('status') }}', data, function(res) {
                     alert('Status Barang Berhasil Diubah !')
+                    row.find('td:eq(7)').html(res.waktu_update_status)
                 }).fail(function(err) {
                     console.log(err.responseJSON);
                 })

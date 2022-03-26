@@ -60,6 +60,7 @@ function(){
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
+    Route::get('members/exportPDF/', [TbMemberController::class, 'exportPDF'])->name('exportPDF-member');
     Route::get('outlets/export/', [TbOutletController::class, 'export'])->name('export-outlet');
     Route::get('pakets/export/', [TbPaketController::class, 'export'])->name('export-paket');
     Route::get('jemput_laundries/export/', [JemputlaundryController::class, 'export'])->name('export-jenlau');

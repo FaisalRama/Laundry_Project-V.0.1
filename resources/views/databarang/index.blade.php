@@ -69,7 +69,7 @@
                                     </option>
                                 </select>
                             </td>
-                            <td>{{ $mbr->updated_at }}</td>
+                            <td>{{ $mbr->waktu_update_status }}</td>
                             <td>
                                 <!-- Update Data -->
                                 <button class="btn edit-member btn-success" type="button" data-toggle="modal"
