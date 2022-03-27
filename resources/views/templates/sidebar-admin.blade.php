@@ -6,56 +6,35 @@
             {{-- Home --}}
             <li><a href="home"><i class="fa fa-home"></i> Home </a></li>
 
-            {{-- Barang Investaris --}}
-            <li><a href="barang_investaris"><i class="fa fa-circle"></i> Barang Investaris </a></li>
+            {{-- Transaksi --}}
+            <li><a><i class="fa fa-table"></i> CRUD <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="member">Member</a></li>
+                    <li><a href="outlet">Outlet</a></li>
+                    <li><a href="paket">Paket</a></li>
+                    <li><a href="jemput_laundry">Penjemputan Laundry</a></li>
+                    <li><a href="data_barang">Data Barang</a></li>
+                    <li><a href="barang_investaris">Barang Inventaris</a></li>
+                    <li><a href="user">User</a></li>
+                </ul>
+            </li>
 
             {{-- Transaksi --}}
             <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="transaksi">Transaksi</a></li>
                     <li><a href="laporan">Laporan</a></li>
-                    <li><a href="simu_barang">Simulasi Transaksi Barang</a></li>
                 </ul>
             </li>
-
-            {{-- Member --}}
-            <li><a href="member"><i class="fa fa-table"></i> Member
-                    <!-- <span class="fa fa-chevron-down">--> </span>
-                </a></li>
-
-            <!-- Outlet -->
-            <li><a href="outlet"><i class="fa fa-adjust"></i> Outlet </span></a></li>
-
-            <!-- Paket -->
-            <li><a href="paket"><i class="fa fa-folder-o"></i> Paket </span></a></li>
-
-            <!-- Data Barang -->
-            <li><a href="data_barang"><i class="fa fa-folder"></i> Data Barang </span></a></li>
-
-            <!-- User Management -->
-            <li><a href="user"><i class="fa fa-user" aria-hidden="true"></i> User </span></a></li>
-
-            {{-- Simulasi Data
-            <li><a href="data_karyawan"><i class="fa fa-table" aria-hidden="true"></i>
-                    Simulasi Data Karyawan
-                    </span></a></li>
-
-            {{-- Simulasi Transaksi --}}
-            {{-- <li><a href="gaji_karyawan"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                    Simulasi Gaji Karyawan
-                    </span></a></li> --}}
 
             {{-- Simulasi Karyawan --}}
             <li><a><i class="fa fa-table"></i> Simulasi <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="data_karyawan">Data Karyawan</a></li>
                     <li><a href="gaji_karyawan">Gaji Karyawan</a></li>
+                    <li><a href="simu_barang">Simulasi Transaksi Barang</a></li>
                 </ul>
             </li>
-
-            {{-- Penjemputan Laundry --}}
-            <li><a href="jemput_laundry"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Penjemputan Laundry
-                    </span></a></li>
 
         </ul>
     </div>

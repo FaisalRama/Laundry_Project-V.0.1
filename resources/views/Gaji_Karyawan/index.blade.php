@@ -292,6 +292,7 @@
             return arr
         }
 
+        /*  */
         // InsertionSort2 (Small to Big)
         function insertionSort2(arr, key) {
             let i, j, id, value; // Penjelasan :
