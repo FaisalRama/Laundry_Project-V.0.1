@@ -8,8 +8,10 @@ use App\Models\jemputlaundry;
 use App\Http\Requests\StorejemputlaundryRequest;
 use App\Http\Requests\UpdatejemputlaundryRequest;
 use App\Models\tb_member;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PenjemputanLaundry;
 
 // Class
 class JemputlaundryController extends Controller
@@ -118,6 +120,18 @@ class JemputlaundryController extends Controller
     public function export() 
     {
         return Excel::download(new PenjemputanExport, 'data_penjemputan_laundry.xlsx');
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = Pdf::loadView('jemput_laundry.pdf',[
+            'penjemputan' => jemputlaundry::all(),
+            'member' => tb_member::all()
+        ]);
+
+        return $pdf->stream();
     }
 
     public function importData(Request $request)

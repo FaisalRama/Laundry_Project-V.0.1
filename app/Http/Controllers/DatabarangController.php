@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\databarang;
 use App\Http\Requests\StoredatabarangRequest;
 use App\Http\Requests\UpdatedatabarangRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class DatabarangController extends Controller
@@ -121,5 +122,16 @@ class DatabarangController extends Controller
         return response()->json([
             'waktu_update_status' => date('Y-m-d h:i:s', strtotime($data->waktu_update_status))
         ]);
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = Pdf::loadView('databarang.pdf',[
+            'databarang' => databarang::all()
+        ]);
+
+        return $pdf->stream();
     }
 }

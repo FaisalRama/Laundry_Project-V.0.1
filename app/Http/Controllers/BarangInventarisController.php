@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\barang_inventaris;
 use App\Http\Requests\Storebarang_inventarisRequest;
 use App\Http\Requests\Updatebarang_inventarisRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class BarangInventarisController extends Controller
@@ -109,5 +110,16 @@ class BarangInventarisController extends Controller
     {
         barang_inventaris::find($id)->delete();
         return redirect(request()->segment(1).'/barang_investaris')->with('success', 'Product Has Been Deleted');
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = Pdf::loadView('barang_inventaris.pdf',[
+            'inven' => barang_inventaris::all()
+        ]);
+
+        return $pdf->stream();
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\Storetb_outletRequest;
 use App\Http\Requests\Updatetb_outletRequest;
 use App\Imports\OutletImport;
 use App\Models\tb_member;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -106,6 +107,17 @@ class TbOutletController extends Controller
     public function export() 
     {
         return Excel::download(new OutletExport, 'outlets.xlsx');
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = Pdf::loadView('Outlet.pdf',[
+            'outlet' => tb_outlet::all()
+        ]);
+
+        return $pdf->stream();
     }
 
     // Import Xls

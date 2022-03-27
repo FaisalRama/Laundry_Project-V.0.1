@@ -19,8 +19,15 @@
                 </a>
             </button>
 
+            {{-- Export PDF --}}
+            <a href="{{ route('exportPDF-jemputlaundry') }}" style="color:white" target="_blank">
+                <button class="btn btn-danger" type="button">
+                    <i class="fa fa-file-excel-o"></i>Export PDF
+                </button>
+            </a>
+
             {{-- Import Excel --}}
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#formImport">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#formImport">
                 <i class="fa fa-file-excel-o"> Import Xls </i>
             </button>
 

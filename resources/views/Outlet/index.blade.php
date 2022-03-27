@@ -14,15 +14,22 @@
                 <i> Isi Data!</i>
             </button>
 
-            {{-- Export --}}
+            {{-- Export Excel --}}
             <a href="{{ route('export-outlet') }}" style="color:white">
                 <button class="btn btn-primary" type="button">
                     <i class="fa fa-file-excel-o"></i>Export Xls
                 </button>
             </a>
 
+            {{-- Export PDF --}}
+            <a href="{{ route('exportPDF-outlet') }}" style="color:white" target="_blank">
+                <button class="btn btn-danger" type="button">
+                    <i class="fa fa-file-excel-o"></i>Export PDF
+                </button>
+            </a>
+
             {{-- Import Excel --}}
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Import">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Import">
                 <i class="fa fa-file-excel-o"> Import Xls </i>
             </button>
 

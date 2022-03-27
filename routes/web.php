@@ -61,6 +61,11 @@ function(){
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('members/export/', [TbMemberController::class, 'export'])->name('export-member');
     Route::get('members/exportPDF/', [TbMemberController::class, 'exportPDF'])->name('exportPDF-member');
+    Route::get('outlets/exportPDF/', [TbOutletController::class, 'exportPDF'])->name('exportPDF-outlet');
+    Route::get('pakets/exportPDF/', [TbPaketController::class, 'exportPDF'])->name('exportPDF-paket');
+    Route::get('jemput_laundries/exportPDF/', [JemputlaundryController::class, 'exportPDF'])->name('exportPDF-jemputlaundry');
+    Route::get('databarangs/exportPDF/', [DatabarangController::class, 'exportPDF'])->name('exportPDF-databarang');
+    Route::get('barang_inventaris/exportPDF/', [BarangInventarisController::class, 'exportPDF'])->name('exportPDF-baranginventaris');
     Route::get('outlets/export/', [TbOutletController::class, 'export'])->name('export-outlet');
     Route::get('pakets/export/', [TbPaketController::class, 'export'])->name('export-paket');
     Route::get('jemput_laundries/export/', [JemputlaundryController::class, 'export'])->name('export-jenlau');

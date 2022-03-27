@@ -8,6 +8,7 @@ use App\Http\Requests\Storetb_paketRequest;
 use App\Http\Requests\Updatetb_paketRequest;
 use App\Imports\PaketImport;
 use App\Models\tb_outlet;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -110,6 +111,18 @@ class TbPaketController extends Controller
     {
         $date = date('Y-m-d');
         return Excel::download(new PaketExport, $date.'_paket.xlsx');
+    }
+
+    // Export Function to PDF
+    // Untuk meng-export data member menjadi file PDF
+    public function exportPDF() 
+    {
+        $pdf = Pdf::loadView('Paket.pdf',[
+            'paket' => tb_paket::all(),
+            'outlet' => tb_outlet::all()
+        ]);
+
+        return $pdf->stream();
     }
 
     // Import Xls
