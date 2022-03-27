@@ -71,6 +71,7 @@ function(){
     Route::get('jemput_laundries/export/', [JemputlaundryController::class, 'export'])->name('export-jenlau');
     Route::post('import-excel', [TbMemberController::class, 'import']);
     Route::post('jemput_laundry/import', [JemputlaundryController::class,'importData'])->name('import-jemputan');
+    Route::get('/download/templatesExcel/jemput_laundry', [JemputlaundryController::class, 'downloadTemplate'])->name('jemput.templatesExcel.download');
     Route::post('import-outlet', [TbOutletController::class,'importData'])->name('import-outlet');
     Route::post('import-paket', [TbPaketController::class,'importData'])->name('import-paket');
     Route::get('data_karyawan', [SimulasiController::class, 'index']);

@@ -12,12 +12,14 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PenjemputanLaundry;
+use illuminate\Support\Facades\Response as FacadesResponse;
 
 // Class
 class JemputlaundryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan Halaman Penjemputan dan Mengambil data dari table penjemputan_laundry
+     * 
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,17 +32,7 @@ class JemputlaundryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Menambahkan data baru ke dalama table penjemputan_laundry
      *
      * @param  \App\Http\Requests\StorejemputlaundryRequest  $request
      * @return \Illuminate\Http\Response
@@ -62,29 +54,7 @@ class JemputlaundryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\jemputlaundry  $jemputlaundry
-     * @return \Illuminate\Http\Response
-     */
-    public function show(jemputlaundry $jemputlaundry)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\jemputlaundry  $jemputlaundry
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(jemputlaundry $jemputlaundry)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Digunakan untuk mengubah suatu data dari tabel penjemputan_laundry
      *
      * @param  \App\Http\Requests\UpdatejemputlaundryRequest  $request
      * @param  \App\Models\jemputlaundry  $jemputlaundry
@@ -97,7 +67,7 @@ class JemputlaundryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Digunakan untuk menghapus suatu data dari tabel penjemputan_laundry berdasarkan id penjemputan
      *
      * @param  \App\Models\jemputlaundry  $jemputlaundry
      * @return \Illuminate\Http\Response
@@ -108,6 +78,9 @@ class JemputlaundryController extends Controller
         return redirect(request()->segment(1).'/jemput_laundry')->with('success', 'Product Has Been Deleted');
     }
 
+    /**
+     * Untuk mengubah data status pada tabel penjemputan_laundry
+     */
     public function status(Request $request){
         $data = jemputlaundry::where('id',$request->id)->first();
         $data->status = $request->status;
@@ -116,12 +89,18 @@ class JemputlaundryController extends Controller
         return 'Data Gagal Ditarik';
     }
 
+    /**
+     * Untuk mengekspor semua data penjemputan_laundry menjadi sebuah bentuk file excel
+     */
     // Export Function to Xls/Excel
     public function export() 
     {
         return Excel::download(new PenjemputanExport, 'data_penjemputan_laundry.xlsx');
     }
 
+    /**
+     * Untuk mengekspor semua data penjemputan_laundry menjadi sebuah bentuk file PDF
+     */
     // Export Function to PDF
     // Untuk meng-export data member menjadi file PDF
     public function exportPDF() 
@@ -134,6 +113,9 @@ class JemputlaundryController extends Controller
         return $pdf->stream();
     }
 
+    /**
+     * Untuk mengimpor data dari file excel ke dalam table penjemputan_laundry
+     */
     public function importData(Request $request)
     {
         // validasi
@@ -150,32 +132,15 @@ class JemputlaundryController extends Controller
         }
 
         return redirect()->back()->with('success', 'all done!');
-		// menangkap file excel
-		// $file = $request->file('file');
- 
-		// membuat nama file unik
-		// $nama_file = rand().$file->getClientOriginalName();
- 
-		// upload ke folder file_member di dalam folder public
-		// $file->move('file_penjemputan',$nama_file);
- 
-		// import data
-		// Excel::import(new PenjemputanImport, public_path('/file_penjemputan/'.$nama_file));
- 
-		// notifikasi dengan session
-		// Session::flash('sukses','Data Siswa Berhasil Diimport!');
- 
-		// alihkan halaman kembali
-		// return redirect()->back()->with('success', 'Import berhasil!');
-
-        // $request->validate([
-        //     'file_import' => 'required|file|mimes:xlsx'
-        // ]);
-
-        // Excel::import(new PickupsImport, $request->file('file_import'));
-
-        // return response()->json([
-        //     'message' => 'Import data berhasil'
-        // ], Response::HTTP_OK);
+    }
+    
+    /**
+     * Download template untuk import data barang.
+     *
+     * @return \Illuminate\Support\Facades\Storage
+     */
+    public function downloadTemplate()
+    {
+        return FacadesResponse::download(public_path() . "/templatesExcel/import_penjemputan.xlsx");
     }
 }

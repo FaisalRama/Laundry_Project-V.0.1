@@ -15,6 +15,9 @@
                             <label for="jenis">File Excel</label>
                             <input type="file" name="file">
                         </div>
+                        <div>Klik <a href="{{ route('jemput.templatesExcel.download') }}">disini</a> untuk
+                            mengunduh
+                            template excel</div>
                     </div>
             </div>
             <div class="modal-footer">

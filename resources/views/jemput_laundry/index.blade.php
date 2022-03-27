@@ -78,7 +78,8 @@
                                 <button class="btn edit-jenlau btn-success" type="button" data-toggle="modal"
                                     data-target="#IsiBarang" data-mode="edit" data-id="{{ $mbr->id }}"
                                     data-id_member="{{ $mbr->id_member }}"
-                                    data-petugas_penjemput="{{ $mbr->petugas_penjemput }}"><a>UPDATE</a></button>
+                                    data-petugas_penjemput="{{ $mbr->petugas_penjemput }}"
+                                    data-status="{{ $mbr->status }}"><a>UPDATE</a></button>
 
                                 <!-- Delete Data -->
                                 <form action="/{{ request()->segment(1) }}/jemput_laundry/{{ $mbr->id }}"
