@@ -9,6 +9,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SimuBarangController;
 use App\Http\Controllers\SimulasiController;
+use App\Http\Controllers\SimulasiTransaksiCucianController;
 use App\Http\Controllers\TbDetailTransaksiController;
 use App\Http\Controllers\TbMemberController;
 use App\Http\Controllers\TbOutletController;
@@ -77,6 +78,7 @@ function(){
     Route::get('data_karyawan', [SimulasiController::class, 'index']);
     Route::get('gaji_karyawan', [GajiKaryawanController::class, 'index']);
     Route::get('simu_barang', [SimuBarangController::class, 'index']);
+    Route::get('simulasi_transaksi_cucian', [SimulasiTransaksiCucianController::class, 'index']);
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 

@@ -32,7 +32,8 @@
                 <ul class="nav child_menu">
                     <li><a href="data_karyawan">Data Karyawan</a></li>
                     <li><a href="gaji_karyawan">Gaji Karyawan</a></li>
-                    <li><a href="simu_barang">Simulasi Transaksi Barang</a></li>
+                    <li><a href="simu_barang">Transaksi Barang</a></li>
+                    <li><a href="simulasi_transaksi_cucian">Transaksi Cucian</a></li>
                 </ul>
             </li>
 

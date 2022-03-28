@@ -165,7 +165,7 @@
             $(function() {
                 // Initialize
                 // let TransaksiBarang = JSON.parse(localStorage.getItem('TransaksiBarang')) || []
-                // $('#tblTrxBarang tbody').html(showData(TransaksiBarang))
+                $('#tblTrxBarang tbody').html(showData(TransaksiBarang))
 
                 // Events
                 $('#TransaksiBarang').on('submit', function(e) {

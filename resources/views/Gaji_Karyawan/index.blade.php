@@ -257,7 +257,7 @@
                 fullawal += awal
                 fulltunjangan += tunjangan
                 fulltotal += total
-                console.log(fullawal + ' + ' + awal)
+                console.log(fullawal + ' + ' + awal) p
 
 
             })
