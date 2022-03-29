@@ -17,9 +17,11 @@ use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
 use \Maatwebsite\Excel\Sheet;
 
+// Interface 
 class PenggunaanBarangExport implements FromCollection, WithHeadings, WithEvents
 {
     /**
+     * Model yang digunakan untuk export
     * @return \Illuminate\Support\Collection
     */
     public function collection()
@@ -27,6 +29,9 @@ class PenggunaanBarangExport implements FromCollection, WithHeadings, WithEvents
         return penggunaanbarang::all();
     }
 
+    /**
+     * Judul untuk masing-masing field
+     */
     public function headings(): array
     {
         return [
@@ -41,6 +46,11 @@ class PenggunaanBarangExport implements FromCollection, WithHeadings, WithEvents
         ];
     }
 
+    /**
+     * Isi pada data table
+     * judul export
+     * dan style untuk excel
+     */
     // Isi Table
     public function registerEvents(): array
     {

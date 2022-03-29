@@ -12,10 +12,14 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Response as FacadesResponse;
 
+
+/** 
+ * Class
+ */
 class PenggunaanbarangController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan Halaman Penjemputan sekaligus mengambil data dari table penggunaanbarangs
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,17 +31,7 @@ class PenggunaanbarangController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Menambahkan suatu data baru ke dalam table penggunaanbarangs
      *
      * @param  \App\Http\Requests\StorepenggunaanbarangRequest  $request
      * @return \Illuminate\Http\Response
@@ -58,29 +52,7 @@ class PenggunaanbarangController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\penggunaanbarang  $penggunaanbarang
-     * @return \Illuminate\Http\Response
-     */
-    public function show(penggunaanbarang $penggunaanbarang)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\penggunaanbarang  $penggunaanbarang
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(penggunaanbarang $penggunaanbarang)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Digunakan untuk mengubah suatu data dari tabel penggunaanbarangs berdasarkan id
      *
      * @param  \App\Http\Requests\UpdatepenggunaanbarangRequest  $request
      * @param  \App\Models\penggunaanbarang  $penggunaanbarang
@@ -102,7 +74,7 @@ class PenggunaanbarangController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Digunakan untuk menghapus suatu data dari tabel penggunaanbarangs berdasarkan id
      *
      * @param  \App\Models\penggunaanbarang  $penggunaanbarang
      * @return \Illuminate\Http\Response
@@ -113,6 +85,9 @@ class PenggunaanbarangController extends Controller
         return redirect(request()->segment(1).'/penggunaan_barang')->with('success', 'Product Has Been Deleted');
     }
 
+    /**
+     * Untuk mengubah data status pada tabel penggunaanbarangs
+     */
     public function status(Request $request){
         $data = penggunaanbarang::where('id',$request->id)->first();
         $data->status = $request->status;
@@ -124,6 +99,9 @@ class PenggunaanbarangController extends Controller
         ]);
     }
 
+    /** 
+     *  Untuk mengekspor semua data penggunaanbarangs menjadi sebuah bentuk file excel
+     */
     // Export Function to Xls/Excel
     // Untuk meng-export data member menjadi file excel
     public function export() 
@@ -131,6 +109,9 @@ class PenggunaanbarangController extends Controller
         return Excel::download(new PenggunaanBarangExport, 'penggunaan_barangs.xlsx');
     }
 
+    /**
+     * Untuk mengekspor semua data penggunaanbarangs menjadi sebuah bentuk file PDF
+     */
     // Export Function to PDF
     // Untuk meng-export data member menjadi file PDF
     public function exportPDF() 
@@ -142,6 +123,9 @@ class PenggunaanbarangController extends Controller
         return $pdf->stream();
     }
 
+    /**
+     * Untuk mengimpor data dari file excel ke dalam table penggunaanbarangs
+     */
     // Import Xls
     // Untuk meng-import data member dari file-excel ke data member
     public function import(Request $request)
@@ -163,7 +147,7 @@ class PenggunaanbarangController extends Controller
     }
 
     /**
-     * Download template untuk import data penjemputan_laundry.
+     * Download template untuk import data penggunaan_barangs.
      *
      * @return \Illuminate\Support\Facades\Storage
      */

@@ -6,7 +6,7 @@
             {{-- Home --}}
             <li><a href="home"><i class="fa fa-home"></i> Home </a></li>
 
-            {{-- Transaksi --}}
+            {{-- CRUD --}}
             <li><a><i class="fa fa-table"></i> CRUD <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="member">Member</a></li>

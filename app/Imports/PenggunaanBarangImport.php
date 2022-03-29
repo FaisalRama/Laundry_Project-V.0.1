@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class PenggunaanBarangImport implements ToModel, WithHeadingRow
 {
     /**
+     * Digunakan untuk menyesuaikan table dengan excel atau aturan untuk mengimport excel
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
@@ -27,6 +28,9 @@ class PenggunaanBarangImport implements ToModel, WithHeadingRow
         ]);
     }
 
+    /**
+     * Untuk melompati beberapa baris dan menentukan mulai dari baris mana import akan dimulai
+     */
     public function headingRow():int{
         return 3;
     }
