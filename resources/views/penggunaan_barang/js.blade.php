@@ -46,9 +46,9 @@
                     _token: "{{ csrf_token() }}"
                 };
                 let row = $(this).closest('tr')
-                $.post('{{ route('statusbarang') }}', data, function(res) {
-                    alert('Status Barang Berhasil Diubah !')
-                    row.find('td:eq(7)').html(res.waktu_update_status)
+                $.post('{{ route('statuspenggunaan') }}', data, function(res) {
+                    alert('Status Berhasil Diubah !')
+                    row.find('td:eq(3)').html(res.waktu_beres)
                 }).fail(function(err) {
                     console.log(err.responseJSON);
                 })
@@ -62,42 +62,30 @@
                 console.log(button)
                 let id = button.data('id')
                 let nama_barang = button.data('nama_barang')
-                let qty = button.data('qty')
-                let harga = button.data('harga')
-                let waktu_beli = button.data('waktu_beli')
-                let supplier = button.data('supplier')
-                let status_barang = button.data('status_barang')
+                let waktu_pakai = button.data('waktu_pakai')
+                let nama_pemakai = button.data('nama_pemakai')
+                let status = button.data('status')
                 let mode = button.data('mode')
                 let modal = $(this)
                 if (mode === "edit") {
-                    modal.find('.modal-title').text('Edit Data Barang')
+                    modal.find('.modal-title').text('Edit Data Penggunaan Barang')
                     modal.find('.modal-body #nama_barang').val(nama_barang)
-                    modal.find('.modal-body #qty').val(qty)
-                    modal.find('.modal-body #harga').val(harga)
-                    modal.find('.modal-body #waktu_beli').val(waktu_beli)
-                    modal.find('.modal-body #supplier').val(supplier)
-                    modal.find('.modal-body #status_barang').val(status_barang)
+                    modal.find('.modal-body #waktu_pakai').val(waktu_pakai)
+                    modal.find('.modal-body #nama_pemakai').val(nama_pemakai)
+                    modal.find('.modal-body #status').val(status)
                     modal.find('.modal-footer #btn-submit').text('Update')
                     modal.find('.modal-body form').attr('action',
-                        '{{ url(request()->segment(1)) }}/data_barang/' + id)
+                        '{{ url(request()->segment(1)) }}/penggunaan_barang/' + id)
                     modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
                 } else {
                     modal.find('.modal-title').text('Input Data Barang')
-                    modal.find('.modal-body #id_member').val('')
-                    modal.find('.modal-body #petugas_penjemput').val('')
-                    modal.find('.modal-body #harga').val('')
-                    modal.find('.modal-body #waktu_beli').val('')
-                    modal.find('.modal-body #supplier').val('')
-                    modal.find('.modal-body #status_barang').val('')
+                    modal.find('.modal-body #nama_barang').val('')
+                    modal.find('.modal-body #waktu_pakai').val('')
+                    modal.find('.modal-body #nama_pemakai').val('')
                     modal.find('.modal-body #method').html("")
                     modal.find('.modal-footer #btn-submit').text('Submit')
                 }
             })
-
-            // Export Xls/Excel
-            // $('#btn-export-xls').on('click', function(e){
-            //     window.location = '{{ url('member/export/xls') }}'
-            // })
 
         });
     </script>

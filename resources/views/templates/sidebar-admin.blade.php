@@ -14,6 +14,7 @@
                     <li><a href="paket">Paket</a></li>
                     <li><a href="jemput_laundry">Penjemputan Laundry</a></li>
                     <li><a href="data_barang">Data Barang</a></li>
+                    <li><a href="penggunaan_barang">Penggunaan Barang</a></li>
                     <li><a href="barang_investaris">Barang Inventaris</a></li>
                     <li><a href="user">User</a></li>
                 </ul>

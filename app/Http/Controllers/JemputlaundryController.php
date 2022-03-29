@@ -12,7 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PenjemputanLaundry;
-use illuminate\Support\Facades\Response as FacadesResponse;
+use Illuminate\Support\Facades\Response as FacadesResponse;
 
 // Class
 class JemputlaundryController extends Controller
@@ -135,7 +135,7 @@ class JemputlaundryController extends Controller
     }
     
     /**
-     * Download template untuk import data barang.
+     * Download template untuk import data penjemputan_laundry.
      *
      * @return \Illuminate\Support\Facades\Storage
      */
