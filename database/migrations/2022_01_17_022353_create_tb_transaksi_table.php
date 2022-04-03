@@ -25,7 +25,7 @@ class CreateTbTransaksiTable extends Migration
             $table->double('diskon');
             $table->integer('pajak')->unsigned();
             $table->enum('status', ['baru', 'proses', 'selesai', 'diambil']);
-            $table->enum('dibayar', ['dibayar', 'belum_dibayar']);
+            $table->enum('pembayaran', ['dibayar', 'belum_dibayar']);
             $table->integer('id_user')->unsigned();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

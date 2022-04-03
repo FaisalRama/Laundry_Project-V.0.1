@@ -20,11 +20,11 @@
     <div class="card" style="border-top:0px"> {{-- Card --}}
         <form method="POST" action="{{ url(request()->segment(1) . '/transaksi') }}">
             @csrf
-            @include('Transaksi.modal')
+            @include('Transaksi2.form')
 
             <input type="hidden" name="id_member" id="id_member">
         </form>
-        @include('Transaksi.data')
+        @include('Transaksi2.data')
     </div>
     <div>
         @if (session('success'))
@@ -54,8 +54,8 @@
 {{-- JS --}}
 @push('script')
     <script>
-        // Script untuk #menu data dan form transaksi
-        $('#dataLaundry').collapse('show')
+        // Script Untuk #menu data dan form transaksi
+        // $('#dataLaundry').collapse('show')
 
         $('#dataLaundry').on('show.bs.collapse', function() {
             $('#formLaundry').collapse('hide');
@@ -68,48 +68,60 @@
             $('#nav-data').removeClass('active');
             $('#nav-form').addClass('active');
         })
-        //end #menu
+
+        $('#DetailData').on('show.bs.collapse', function() {
+            $('#DetailPelanggan').collapse('hide');
+            $('#nav-DetailPelanggan').removeClass('active');
+            $('#nav-DetailData').addClass('active');
+        })
+
+        $('#DetailPelanggan').on('show.bs.collapse', function() {
+            $('#DetailData').collapse('hide');
+            $('#nav-DetailData').removeClass('active');
+            $('#nav-DetailPelanggan').addClass('active');
+        })
+        // end menu
 
         // Initialize
+        let subtotal = total = 0;
         $(function() {
             $('#tblMember').DataTable();
+        });
+
+        $(function() {
             $('#tblPaket').DataTable();
+        });
 
-            // Action
-            // Button Pilih Member
-            $('#tblMember').on('click', '.pilihMemberBtn', function() {
-                pilihMember(this)
-                $('#modalMember').modal('hide')
-            })
-            // End Button Pilih Member
-
-            // Button Pilih Paket
-            $('#tblPaket').on('click', '.pilihPaketBtn', function() {
-                pilihPaket(this)
-                $('#modalPaket').modal('hide')
-            })
-            // End Button Pilih Paket
-
-        })
+        $(function() {
+            $('#tb-transaksi').DataTable();
+        });
         // End of Initialize
 
+        // action
+        // pilih member
+        $('#tblMember').on('click', '.pilihMemberBtn', function() {
+            pilihMember(this)
+            $('#modalMember').modal('hide')
+        })
 
+        // pilih paket
+        $('#tblPaket').on('click', '.pilihPaketBtn', function() {
+            pilihPaket(this)
+            $('#modalPaket').modal('hide')
+        })
 
-        // Function 
-        // Pilih Member
+        //function pilih member
         function pilihMember(x) {
             const tr = $(x).closest('tr')
-            const namaJK = tr.find('td:eq(1)').text() + "/" + tr.find('td:eq(2)').text()
+            const namaJk = tr.find('td:eq(1)').text() + "/" + tr.find('td:eq(2)').text()
             const biodata = tr.find('td:eq(4)').text() + "/" + tr.find('td:eq(3)').text()
             const idMember = tr.find('.idMember').val()
-            $('#nama-pelanggan').text(namaJK)
+            $('#nama-pelanggan').text(namaJk)
             $('#biodata-pelanggan').text(biodata)
             $('#id_member').val(idMember)
-            console.log(idMember)
         }
-        // End 
 
-        // Pilih Paket
+        //function pilih paket
         function pilihPaket(x) {
             const tr = $(x).closest('tr')
             const namaPaket = tr.find('td:eq(1)').text()
@@ -119,59 +131,47 @@
             let data = ''
             let tbody = $('#tblTransaksi tbody tr td').text()
             data += '<tr>'
-            data += `<td>${namaPaket}</td> `
-            data += `<td>${harga}</td>`;
+            data += `<td> ${namaPaket} </td>`
+            data += `<td> ${harga} </td>`;
             data += `<input type="hidden" name="id_paket[]" value="${idPaket}">`
             data += `<td><input type="number" value="1" min="1" class="qty" name="qty[]" size="2" style="width:40px"></td>`;
             data += `<td><label name="sub_total[]" class="subTotal">${harga}</label></td>`;
-            data +=
-                `<td><button type="button" class="btnRemovePaket btn btn-danger"><span class="fa fa-times-circle"></span></button></td>`;
-            data += '</tr>';
+            data += `<td><button type="button" class="btnRemovePaket btn btn-danger">Hapus</button></td>`;
+            data += '<tr>';
 
-            // Mesti teliti, beda huruf berpengaruh ke table (= -> sama_dengan, ==-> ke object yg dituju)
-            if (tbody == 'Belum Ada Data !') $('#tblTransaksi tbody tr').remove();
+            if (tbody == 'Belum ada data') $('#tblTransaksi tbody tr').remove();
 
             $('#tblTransaksi tbody').append(data);
 
             subtotal += Number(harga)
-            total = subtotal - Number($('#diskon').val()) + Number($('#pajak-harga').val())
+            total = subtotal - Number($('#diskon').val()) + Number($('#biaya_tambahan').val()) + Number($('#pajak-harga')
+                .val())
             $('#subtotal').text(subtotal)
-            $('#total').text(total)
+            $('#total').val(total)
         }
-        // End Pilih Paket
 
-        // onchange qty
-        $('#tblTransaksi').on('change', '.qty', function() {
-            hitungTotalAkhir(this)
-        })
-        //
-
-        // function hitung total
+        //function hitung total
         function hitungTotalAkhir(a) {
             let qty = Number($(a).closest('tr').find('.qty').val());
             let harga = Number($(a).closest('tr').find('td:eq(1)').text());
             let subTotalAwal = Number($(a).closest('tr').find('.subTotal').text());
             let count = qty * harga;
             subtotal = subtotal - subTotalAwal + count
-            total = subtotal - Number($('#diskon').val()) + Number($('#pajak-harga').val())
-
-
+            let pajak = Number($('#pajak-persen').val()) / 100 * subtotal
+            total = subtotal - Number($('#diskon').val()) + Number($('#biaya_tambahan').val()) + pajak;
             $(a).closest('tr').find('.subTotal').text(count)
+            $('#pajak-harga').text(pajak)
             $('#subtotal').text(subtotal)
-            $('#total').text(total)
-
-            console.log(subtotal);
+            $('#total').val(total)
         }
         //
 
-        // Initialize Pembayaran
-        let subtotal = total = 0;
-        $(function() {
-            $('#tblMember').DataTable();
+        // onchange qty
+        $('#tblTransaksi').on('change', '.qty', function() {
+            hitungTotalAkhir(this)
         })
-        //
 
-        // Remove Paket
+        // remove paket
         $('#tblTransaksi').on('click', '.btnRemovePaket', function() {
             let subTotalAwal = parseFloat($(this).closest('tr').find('.subTotal').text());
             subtotal -= subTotalAwal
@@ -179,8 +179,18 @@
 
             $currentRow = $(this).closest('tr').remove();
             $('#subtotal').text(subtotal)
-            $('#total').text(total)
+            $('#total').val(total)
+            hitungTotalAkhir(this)
         })
         //
+
+        // menghapus alert
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+            $("#success-alert").slideUp(500);
+        });
+
+        $("#error-alert").fadeTo(2000, 500).slideUp(500, function() {
+            $("#success-alert").slideUp(500);
+        });
     </script>
 @endpush

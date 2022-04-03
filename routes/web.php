@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AbsensiKerjaController;
+use App\Http\Controllers\TbAbsensiKerjaController;
+use App\Http\Controllers\aksesorisController;
 use App\Http\Controllers\BarangInventarisController;
 use App\Http\Controllers\DatabarangController;
 use App\Http\Controllers\GajiKaryawanController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\TbOutletController;
 use App\Http\Controllers\TbPaketController;
 use App\Http\Controllers\TbTransaksiController;
 use App\Http\Controllers\TbUserController;
+use App\Http\Controllers\TheTransaksiController;
 use App\Policies\TbMemberPolicy;
 use Illuminate\Support\Facades\Route;
 
@@ -55,12 +59,15 @@ function(){
     Route::resource('paket', TbPaketController::class);
     Route::resource('outlet', TbOutletController::class);
     Route::resource('transaksi', TbTransaksiController::class);
+    Route::resource('the_transaksi', TheTransaksiController::class);
     Route::resource('jemput_laundry', JemputlaundryController::class);
     Route::resource('data_barang', DatabarangController::class);
     Route::resource('penggunaan_barang', PenggunaanbarangController::class);
+    Route::resource('absensi_kerja', AbsensiKerjaController::class);
     Route::post('/status', [JemputlaundryController::class ,'status'])->name('status');
     Route::post('/status/databarang', [DatabarangController::class ,'status'])->name('statusbarang');
     Route::post('/status/penggunaan_barang', [PenggunaanbarangController::class ,'status'])->name('statuspenggunaan');
+    Route::post('/status/absensi_kerja', [AbsensiKerjaController::class ,'status'])->name('statusAbsensiKerja');
     Route::get('detail_transaksi', [TbDetailTransaksiController::class, 'index']);
     Route::get('laporan', [LaporanController::class, 'index']);
     Route::get('members/exportPDF/', [TbMemberController::class, 'exportPDF'])->name('exportPDF-member');
@@ -86,6 +93,9 @@ function(){
     Route::get('gaji_karyawan', [GajiKaryawanController::class, 'index']);
     Route::get('simu_barang', [SimuBarangController::class, 'index']);
     Route::get('simulasi_transaksi_cucian', [SimulasiTransaksiCucianController::class, 'index']);
+    Route::get('mim', [aksesorisController::class, 'index']);
+    // Route::get('/laporan', [TheTransaksiController::class, 'laporan']);
+    // Route::get('/laporanbelum', [TransaksiController::class, 'laporanbelum']);
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 

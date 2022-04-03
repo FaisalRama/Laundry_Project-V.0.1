@@ -15,6 +15,7 @@
                     <li><a href="jemput_laundry">Penjemputan Laundry</a></li>
                     <li><a href="data_barang">Data Barang</a></li>
                     <li><a href="penggunaan_barang">Penggunaan Barang</a></li>
+                    <li><a href="absensi_kerja">Absensi Kerja Karyawan</a></li>
                     <li><a href="barang_investaris">Barang Inventaris</a></li>
                     <li><a href="user">User</a></li>
                 </ul>
@@ -24,6 +25,7 @@
             <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="transaksi">Transaksi</a></li>
+                    <li><a href="the_transaksi">Transaksi 2</a></li>
                     <li><a href="laporan">Laporan</a></li>
                 </ul>
             </li>
@@ -35,6 +37,7 @@
                     <li><a href="gaji_karyawan">Gaji Karyawan</a></li>
                     <li><a href="simu_barang">Transaksi Barang</a></li>
                     <li><a href="simulasi_transaksi_cucian">Transaksi Cucian</a></li>
+                    <li><a href="mim">Transaksi Aksesoris</a></li>
                 </ul>
             </li>
 

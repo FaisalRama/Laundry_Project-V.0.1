@@ -56,6 +56,15 @@ class TbTransaksiController extends Controller
      */
     public function store(Storetb_transaksiRequest $request)
     {
+        $request->validate([
+            'id_member' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+    
+        ]);
+
         $request['id_outlet'] = auth()->user()->id_outlet;
         $request['kode_invoice'] = $this->generateKodeInvoice();
         $request['tgl_bayar'] = ($request->bayar == 0?NULL:date('Y-m-d  H:i:s'));
