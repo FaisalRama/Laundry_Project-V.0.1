@@ -43,4 +43,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function outlet()
+    {
+        return $this->belongsTo(tb_outlet::class, 'id_outlet');
+    }
+    
+    public function the_transaksi()
+    {
+        return $this->hasMany(the_transaksi::class);
+    }
+
 }

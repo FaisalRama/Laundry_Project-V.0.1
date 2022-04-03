@@ -25,4 +25,9 @@ class tb_member extends Model
     {
         return $this->hasMany(tb_transaksi::class);
     }
+
+    public function the_transaksi()
+    {
+        return $this->hasMany(the_transaksi::class);
+    }
 }

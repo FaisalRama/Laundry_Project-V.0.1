@@ -20,12 +20,19 @@ class TbTransaksiController extends Controller
      */
     public function index()
     {
-        return view('Transaksi.index',[
-                'member' => tb_member::all(),
-                'paket' => tb_paket::all(),
-                'transaksi' => tb_transaksi::all(),
-                'detail_transaksi' => tb_detail_transaksi::all()
-        ]);
+        // return view('Transaksi.index',[
+        //         'member' => tb_member::all(),
+        //         'paket' => tb_paket::all(),
+        //         'transaksi' => tb_transaksi::all(),
+        //         'detail_transaksi' => tb_detail_transaksi::all()
+        // ]);
+
+        $data['member'] = tb_member::get();
+        $data['detail_transaksi'] = tb_detail_transaksi::get();
+        $data['paket'] = tb_paket::where('id_outlet', auth()->user()->id_outlet)->get();
+        $data['transaksi'] = tb_transaksi::where('id_outlet', auth()->user()->id_outlet)->get();
+
+        return view('transaksi.index')->with($data);
     }
 
     // Untuk membuat kode_invoice terbaru setiap menambahkan data baru

@@ -22,7 +22,7 @@ class CreateTheDetailTrxesTable extends Migration
             $table->text('keterangan');
             $table->timestamps();
 
-            $table->foreign('id_transaksi')->references('id')->on('tb_transaksi')->onDelete('cascade');
+            $table->foreign('id_transaksi')->references('id')->on('the_transaksis')->onDelete('cascade');
             $table->foreign('id_paket')->references('id')->on('tb_paket')->onDelete('cascade');
         });
     }

@@ -29,7 +29,7 @@ class the_transaksi extends Model
      */
     public function member()
     {
-        return $this->belongsTo(the_transaksi::class, 'id_member');
+        return $this->belongsTo(tb_member::class, 'id_member');
     }
 
     /**

@@ -12,7 +12,7 @@ class the_detailTrx extends Model
     public $keyType = 'string';
     protected $primaryKey = 'id';
     public $incrementing = true;
-    protected $table = 'tb_detail_transaksi';
+    protected $table = 'tb_detail_trxes';
     protected $guarded = ['id', 'created_at', 'updated_at'];
     protected $fillable = [
         'id_transaksi',
@@ -49,9 +49,9 @@ class the_detailTrx extends Model
     /**
      * untuk merelasikan model DetailTransaksi dengan model transaksi
      */
-    public function Transaksi()
+    public function the_transaksi()
     {
-        return $this->belongsTo(the_transaksi::class,);
+        return $this->belongsTo(the_transaksi::class, 'id_transaksi');
     }
 
     /**

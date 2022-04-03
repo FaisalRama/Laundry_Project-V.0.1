@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\the_transaksi;
 use App\Http\Requests\Storethe_transaksiRequest;
 use App\Http\Requests\Updatethe_transaksiRequest;
-use App\Models\tb_detail_transaksi;
 use App\Models\tb_member;
 use App\Models\tb_paket;
 use App\Models\tb_transaksi;
+use App\Models\the_detailTrx;
 use Illuminate\Http\Request;
 
 class TheTransaksiController extends Controller
@@ -21,9 +21,9 @@ class TheTransaksiController extends Controller
     public function index()
     {
         $data['member'] = tb_member::get();
-        $data['DetailTransaksi'] = tb_detail_transaksi::get();
+        $data['DetailTransaksi'] = the_detailTrx::get();
         $data['paket'] = tb_paket::where('id_outlet', auth()->user()->id_outlet)->get();
-        $data['transaksi'] = tb_transaksi::where('id_outlet', auth()->user()->id_outlet)->get();
+        $data['transaksi'] = the_transaksi::where('id_outlet', auth()->user()->id_outlet)->get();
 
         return view('transaksi2.index')->with($data);
     }
@@ -84,7 +84,7 @@ class TheTransaksiController extends Controller
 
         //input detail pembelian
         foreach ($request->id_paket as $i => $v) {
-            $input_detail = tb_detail_transaksi::create([
+            $input_detail = the_detailTrx::create([
                 'id_transaksi' => $input_transaksi->id,
                 'id_paket' => $request->id_paket[$i],
                 'qty' => $request->qty[$i],

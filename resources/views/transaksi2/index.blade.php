@@ -18,7 +18,7 @@
         </li>
     </ul>
     <div class="card" style="border-top:0px"> {{-- Card --}}
-        <form method="POST" action="{{ url(request()->segment(1) . '/transaksi') }}">
+        <form method="POST" action="{{ url(request()->segment(1) . '/the_transaksi') }}">
             @csrf
             @include('Transaksi2.form')
 

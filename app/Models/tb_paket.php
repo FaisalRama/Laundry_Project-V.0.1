@@ -26,4 +26,14 @@ class tb_paket extends Model
         return $this -> hasMany(tb_detail_transaksi::class);
     }
 
+    public function the_transaksi()
+    {
+        return $this->hasMany(the_transaksi::class);
+    }
+
+    public function the_detailTrx()
+    {
+        return $this->hasMany(the_detailTrx::class);
+    }
+
 }

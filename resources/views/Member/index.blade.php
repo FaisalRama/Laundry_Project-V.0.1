@@ -61,9 +61,9 @@
                             <td>{{ $mbr->alamat }}</td>
                             <td>
                                 <!--
-                                    Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
-                                    MySql akan sesuai yg kita inginkan
-                                -->
+                                            Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
+                                            MySql akan sesuai yg kita inginkan
+                                        -->
                                 @switch($mbr->jenis_kelamin)
                                     @case('L')
                                         Laki-Laki
