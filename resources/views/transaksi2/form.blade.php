@@ -76,8 +76,8 @@
                                     <label for="">Pembayaran</label>
                                     <select class="form-control" name="pembayaran" id="pembayaran">
                                         <option selected disabled>- Pilih Metode Pembayaran -</option>
-                                        <option value="dibayar">Dibayar</option>
-                                        <option value="belum_dibayar">Bayar Nanti</option>
+                                        <option value="1">Dibayar</option>
+                                        <option value="0">Bayar Nanti</option>
                                     </select>
                                     <div>
                                         <button class="btn btn-primary" style="margin-top: 10px; width:170px"

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AbsensiKerjaController;
 use App\Http\Controllers\TbAbsensiKerjaController;
 use App\Http\Controllers\aksesorisController;
+use App\Http\Controllers\AssignmentlistController;
 use App\Http\Controllers\BarangInventarisController;
 use App\Http\Controllers\DatabarangController;
 use App\Http\Controllers\GajiKaryawanController;
@@ -64,6 +65,7 @@ function(){
     Route::resource('data_barang', DatabarangController::class);
     Route::resource('penggunaan_barang', PenggunaanbarangController::class);
     Route::resource('absensi_kerja', AbsensiKerjaController::class);
+    Route::resource('assignment_list', AssignmentlistController::class);
     Route::post('/status', [JemputlaundryController::class ,'status'])->name('status');
     Route::post('/status/databarang', [DatabarangController::class ,'status'])->name('statusbarang');
     Route::post('/status/penggunaan_barang', [PenggunaanbarangController::class ,'status'])->name('statuspenggunaan');

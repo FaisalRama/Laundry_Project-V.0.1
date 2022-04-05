@@ -61,9 +61,9 @@
                             <td>{{ $mbr->alamat }}</td>
                             <td>
                                 <!--
-                                            Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
-                                            MySql akan sesuai yg kita inginkan
-                                        -->
+                                                Berfungsi untuk mengubah tampilan di web nya, akan tetapi data yg masuk di
+                                                MySql akan sesuai yg kita inginkan
+                                            -->
                                 @switch($mbr->jenis_kelamin)
                                     @case('L')
                                         Laki-Laki
@@ -166,6 +166,26 @@
                             else swal.close()
                         })
                 })
+
+                //     $('#tb-pbarang').on('change', '.bstatus', function() {
+                //     let bstatus = $(this).closest('tr').find('.bstatus').val()
+                //     let id = $(this).closest('tr').find('.id').val()
+                //     let data = {
+                //         id: id,
+                //         bstatus: bstatus,
+                //         _token: "{{ csrf_token() }}"
+                //     };
+                //     let row = $(this).closest('tr')
+                //     $.post('{{ route('bstatus') }}', data, function(res) {
+                //         swal("Sukses", "Data Berhasil Diubah", "success", {
+                //             buttons: false,
+                //             timer: 1000,
+                //         })
+                //         row.find('td:eq(7)').html(res.tgl_status)
+                //     })
+                //     console.log(id);
+                //     console.log(bstatus);
+                // })
 
                 // Edit dan Input Kelas -
                 $('#IsiBarang').on('show.bs.modal', function(event) {

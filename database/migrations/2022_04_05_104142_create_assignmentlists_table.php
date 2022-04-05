@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbMemberTable extends Migration
+class CreateAssignmentlistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTbMemberTable extends Migration
      */
     public function up()
     {
-        Schema::create('tb_member', function (Blueprint $table) {
+        Schema::create('assignmentlists', function (Blueprint $table) {
             $table->id('id');
-            $table->string('nama', 100);
-            $table->text('alamat');
-            $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->string('tlp', 15);
+            $table->string('fitur', 255);
+            $table->enum('status_fitur', ['belum_selesai', 'selesai']);
             $table->dateTime('history_waktu_pengerjaan')->nullable();
+            $table->boolean('setor')->default(0);
+            $table->dateTime('waktu_setor')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -32,6 +32,6 @@ class CreateTbMemberTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_members');
+        Schema::dropIfExists('assignmentlists');
     }
 }
