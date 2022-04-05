@@ -63,6 +63,7 @@ class TbTransaksiController extends Controller
      */
     public function store(Storetb_transaksiRequest $request)
     {
+        dd($request);
         $request->validate([
             'id_member' => 'required',
             'tgl' => 'required',

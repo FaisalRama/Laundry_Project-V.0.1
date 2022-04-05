@@ -60,11 +60,9 @@
             {{-- Transaksi --}}
             <li><a><i class="fa fa-edit"></i> Transaction <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="to-do_data_karyawan">To-do Data Karyawan</a></li>
-                    <li><a href="to-do_gaji_karyawan">To-do Gaji Karyawan</a></li>
-                    <li><a href="to-do_simu_barang">To-do Transaksi Barang</a></li>
-                    <li><a href="to-do_simulasi_transaksi_cucian">To-do Transaksi Cucian</a></li>
-                    <li><a href="to-do_mim">To-do Transaksi Aksesoris</a></li>
+                    <li><a href="transaksi">Transaksi</a></li>
+                    <li><a href="the_transaksi">Transaksi 2</a></li>
+                    <li><a href="laporan">Laporan</a></li>
                 </ul>
             </li>
 

@@ -22,6 +22,7 @@ use App\Http\Controllers\TbPaketController;
 use App\Http\Controllers\TbTransaksiController;
 use App\Http\Controllers\TbUserController;
 use App\Http\Controllers\TheTransaksiController;
+use App\Http\Controllers\TodomemberController;
 use App\Policies\TbMemberPolicy;
 use Illuminate\Support\Facades\Route;
 
@@ -98,6 +99,9 @@ function(){
     Route::get('mim', [aksesorisController::class, 'index']);
     // Route::get('/laporan', [TheTransaksiController::class, 'laporan']);
     // Route::get('/laporanbelum', [TransaksiController::class, 'laporanbelum']);
+
+    /** To Do Menu Routes */
+    Route::resource('to-do_member', TodomemberController::class);
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 
