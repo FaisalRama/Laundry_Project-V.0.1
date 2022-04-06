@@ -102,6 +102,7 @@ function(){
 
     /** To Do Menu Routes */
     Route::resource('to-do_member', TodomemberController::class);
+    Route::post('to-do_member/beres_tugas', [TodomemberController::class, 'updateCheck'])->name('beres_tugas');
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 

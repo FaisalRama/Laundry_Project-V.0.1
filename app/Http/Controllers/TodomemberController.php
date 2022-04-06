@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\todomember;
 use App\Http\Requests\StoretodomemberRequest;
 use App\Http\Requests\UpdatetodomemberRequest;
+use Illuminate\Http\Request;
 
 class TodomemberController extends Controller
 {
@@ -70,9 +71,16 @@ class TodomemberController extends Controller
      * @param  \App\Models\todomember  $todomember
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatetodomemberRequest $request, todomember $todomember)
+    public function update(Request $request,  $id)
     {
-        //
+        $rules = $request->validate([
+            'keterangan' => 'required'
+        ]);
+
+        $update = todomember::find($id)->update($rules);
+            if($update){
+                return redirect(request()->segment(1).'/to-do_member')->with('success', 'Data Produk Berhasil Diubah!');
+            }
     }
 
     /**
@@ -84,5 +92,17 @@ class TodomemberController extends Controller
     public function destroy(todomember $todomember)
     {
         //
+    }
+
+    public function updateCheck(Request $request)
+    {
+        $data = todomember::where('id', $request->id)->first();
+        $data->check = $request->checked;
+        $update = $data->save();
+
+        if($update)
+            return 'Data Telah Ditarik!';
+            
+        return 'Data Gagal Ditarik!';
     }
 }
