@@ -1,7 +1,7 @@
 @extends('templates.gentelella')
 
 @section('title-of-content')
-    OUTLET (to-do list)
+    DATA BARANG (to-do list)
 @endsection
 
 @section('content')
@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($todooutlet as $mbr)
+                    @foreach ($tododatabarang as $mbr)
                         <tr>
                             <td>{{ $i = isset($i) ? ++$i : ($i = 1) }}<input type="text" hidden class="id"
                                     value="{{ $mbr->id }}"></td>
@@ -69,6 +69,6 @@
             </table>
         </div>
 
-        @include('to_do_list_on_project.crud.outlet.form')
-        @include('to_do_list_on_project.crud.outlet.js')
+        @include('to_do_list_on_project.crud.databarang.form')
+        @include('to_do_list_on_project.crud.databarang.js')
     @endsection

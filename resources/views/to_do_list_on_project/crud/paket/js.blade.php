@@ -40,7 +40,7 @@
                     _token: "{{ csrf_token() }}"
                 };
                 let row = $(this).closest('tr')
-                $.post('{{ route('beres_tugas_member') }}', data, function(res) {
+                $.post('{{ route('beres_tugas_paket') }}', data, function(res) {
                     swal("Berhasil", "Data Tugas Terubah", "success", {
                         buttons: false,
                         timer: 1500,
@@ -59,7 +59,7 @@
                 let mode = button.data('mode')
                 let modal = $(this)
                 if (mode === "edit") {
-                    modal.find('.modal-title').text('Edit Data Penggunaan Barang')
+                    modal.find('.modal-title').text('Edit Keterangan')
                     modal.find('.modal-body #tugas').val(tugas)
                     modal.find('.modal-body #keterangan').val(keterangan)
                     modal.find('.modal-footer #btn-submit').text('Update')
@@ -67,7 +67,7 @@
                         '{{ url(request()->segment(1)) }}/to-do_member/' + id)
                     modal.find('.modal-body #method').html('{{ method_field('PATCH') }}')
                 } else {
-                    modal.find('.modal-title').text('Input Data Barang')
+                    modal.find('.modal-title').text('Input Keterangan')
                     modal.find('.modal-body #tugas').val('')
                     modal.find('.modal-body #keterangan').val('')
                     modal.find('.modal-body #method').html("")

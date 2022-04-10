@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TodomemberSeeder extends Seeder
+class TodouserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,55 +14,55 @@ class TodomemberSeeder extends Seeder
      */
     public function run()
     {
-        $todomembers = 
+        $todouser = 
         [
             [
-                'tugas' => 'Menu Member',
-                'check' => 1,
+                'tugas' => 'Menu User',
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Tampilan Halaman Website / Read',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Input / Create',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Edit / Update',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Destroy / Delete',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Export Excel',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Export PDF',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Import Excel',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'DONE, AMAN' 
             ],
             [
                 'tugas' => 'Downlaod Template Excel Untuk Import',
-                'check' => 1,
+                'check' => 0,
                 'keterangan' => 'Isi Keterangan!' 
             ]
         ];
 
-        DB::table('todomembers')->insert($todomembers);
+        DB::table('todousers')->insert($todouser);
     }
 }

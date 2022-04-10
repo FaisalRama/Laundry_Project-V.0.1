@@ -60,7 +60,8 @@
                                 <!-- Update Data -->
                                 <button class="btn edit-member btn-success" type="button" data-toggle="modal"
                                     data-target="#IsiBarang" data-mode="edit" data-id="{{ $mbr->id }}"
-                                    data-tugas="{{ $mbr->tugas }}"><a>EDIT KETERANGAN</a></button>
+                                    data-tugas="{{ $mbr->tugas }}" data-keterangan="{{ $mbr->keterangan }}"><a>EDIT
+                                        KETERANGAN</a></button>
                             </td>
                         </tr>
                     @endforeach

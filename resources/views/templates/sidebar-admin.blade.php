@@ -13,13 +13,13 @@
                     <li><a><i class="fa fa-table"></i> on CRUD <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="to-do_member">To-do Member</a></li>
-                            <li><a href="to_do_outlet">To-do Outlet</a></li>
-                            <li><a href="to_do paket">To-do Paket</a></li>
+                            <li><a href="to-do_outlet">To-do Outlet</a></li>
+                            <li><a href="to-do_paket">To-do Paket</a></li>
                             <li><a href="to-do_jemput_laundry">To-do Penjemputan Laundry</a></li>
                             <li><a href="to-do_data_barang">To-do Data Barang</a></li>
                             <li><a href="to-do_penggunaan_barang">To-do Penggunaan Barang</a></li>
                             <li><a href="to-do_absensi_kerja">To-do Absensi Kerja Karyawan</a></li>
-                            <li><a href="to-do_barang_investaris">To-do Barang Inventaris</a></li>
+                            <li><a href="to-do_barang_inventaris">To-do Barang Inventaris</a></li>
                             <li><a href="to-do_user">To-do User</a></li>
                         </ul>
                     </li>

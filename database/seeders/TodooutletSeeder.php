@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TodomemberSeeder extends Seeder
+class TodooutletSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,10 @@ class TodomemberSeeder extends Seeder
      */
     public function run()
     {
-        $todomembers = 
+        $todooutlet = 
         [
             [
-                'tugas' => 'Menu Member',
+                'tugas' => 'Menu Outlet',
                 'check' => 1,
                 'keterangan' => 'DONE, AMAN' 
             ],
@@ -63,6 +63,6 @@ class TodomemberSeeder extends Seeder
             ]
         ];
 
-        DB::table('todomembers')->insert($todomembers);
+        DB::table('todooutlets')->insert($todooutlet);
     }
 }

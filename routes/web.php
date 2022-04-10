@@ -22,7 +22,15 @@ use App\Http\Controllers\TbPaketController;
 use App\Http\Controllers\TbTransaksiController;
 use App\Http\Controllers\TbUserController;
 use App\Http\Controllers\TheTransaksiController;
+use App\Http\Controllers\TodoabsensiKerjaKaryawanController;
+use App\Http\Controllers\TodobarangInventarisController;
+use App\Http\Controllers\TododatabarangController;
 use App\Http\Controllers\TodomemberController;
+use App\Http\Controllers\TodooutletController;
+use App\Http\Controllers\TodopaketController;
+use App\Http\Controllers\TodopenggunaanBarangController;
+use App\Http\Controllers\TodopenjemputanLaundryController;
+use App\Http\Controllers\TodouserController;
 use App\Policies\TbMemberPolicy;
 use Illuminate\Support\Facades\Route;
 
@@ -101,8 +109,33 @@ function(){
     // Route::get('/laporanbelum', [TransaksiController::class, 'laporanbelum']);
 
     /** To Do Menu Routes */
+    /** to do member */
     Route::resource('to-do_member', TodomemberController::class);
-    Route::post('to-do_member/beres_tugas', [TodomemberController::class, 'updateCheck'])->name('beres_tugas');
+    Route::post('to-do_member/beres_tugas', [TodomemberController::class, 'updateCheck'])->name('beres_tugas_member');
+    /** to do outlet */
+    Route::resource('to-do_outlet', TodooutletController::class);
+    Route::post('to-do_outlet/beres_tugas', [TodooutletController::class, 'updateCheck'])->name('beres_tugas_outlet');
+    /** to do paket */
+    Route::resource('to-do_paket', TodopaketController::class);
+    Route::post('to-do_paket/beres_tugas', [TodopaketController::class, 'updateCheck'])->name('beres_tugas_paket');
+    /** to do penjemputan laundry */
+    Route::resource('to-do_jemput_laundry', TodopenjemputanLaundryController::class);
+    Route::post('to-do_jemput_laundry/beres_tugas', [TodopenjemputanLaundryController::class, 'updateCheck'])->name('beres_tugas_penjemputan_laundry');
+    /** to do data barang */
+    Route::resource('to-do_data_barang', TododatabarangController::class);
+    Route::post('to-do_data_barang/beres_tugas', [TododatabarangController::class, 'updateCheck'])->name('beres_tugas_databarang');
+    /** to do penggunaan barang */
+    Route::resource('to-do_penggunaan_barang', TodopenggunaanBarangController::class);
+    Route::post('to-do_penggunaan_barang/beres_tugas', [TodopenggunaanBarangController::class, 'updateCheck'])->name('beres_tugas_penggunaan_barang');
+    /** to do absensi kerja karyawan */
+    Route::resource('to-do_absensi_kerja', TodoabsensiKerjaKaryawanController::class);
+    Route::post('to-do_absensi_kerja/beres_tugas', [TodoabsensiKerjaKaryawanController::class, 'updateCheck'])->name('beres_tugas_absensi_kerja_karyawan');
+    /** to do barang inventaris */
+    Route::resource('to-do_barang_inventaris', TodobarangInventarisController::class);
+    Route::post('to-do_barang_inventaris/beres_tugas', [TodobarangInventarisController::class, 'updateCheck'])->name('beres_tugas_barang_inventaris');
+    /** to do user */
+    Route::resource('to-do_user', TodouserController::class);
+    Route::post('to-do_user/beres_tugas', [TodouserController::class, 'updateCheck'])->name('beres_tugas_user');
 });
 
 Route::group(['prefix' => 'k', 'middleware' =>['isKasir', 'auth']], 
